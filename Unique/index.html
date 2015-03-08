@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>UNIQUE ID generator</title>
+		<meta name="description" content="Minimal Form Interface: Simplistic, single input view form" />
+		<meta name="keywords" content="form, minimal, interface, single input, big form, responsive form, transition" />
+		<meta name="author" content="Codrops" />
+		<link rel="shortcut icon" href="../images/favicon.ico">
+		<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<section>
+				<form id="theForm" class="simform" autocomplete="off">
+					<div class="simform-inner">
+						<ol class="questions">
+							<li>
+								<span><label for="ver">What is your Calendario version?</label></span>
+								<input id="ver" name="ver" type="text" placeholder="Example: 3.2.0"/>
+							</li>
+							<li>
+								<span><label for="name">Mind if you tell us your Name?</label></span>
+								<input id="name" name="name" type="text" placeholder="Example: anonymous or your name"/>
+							</li>
+							<li>
+								<span><label for="pun">Do you have previous unique code?</label></span>
+								<input id="pun" name="pun" type="text" placeholder="Example: 3.2.0_E6958f58d6ade1fc4b493adeee547f6c2"/>
+							</li>
+						</ol>
+						<button class="submit" type="submit">Send answers</button>
+						<div class="controls">
+							<button class="next"></button>
+							<div class="progress"></div>
+							<span class="number">
+								<span class="number-current"></span>
+								<span class="number-total"></span>
+							</span>
+							<span class="error-message"></span>
+						</div><!-- / controls -->
+					</div><!-- /simform-inner -->
+					<span class="final-message"></span>
+				</form><!-- /simform -->			
+			</section>
+		</div><!-- /container -->
+		<script src="js/classie.js"></script>
+		<script src="js/stepsForm.js"></script>
+		<script src="js/jquery.js"></script>
+		<script src="js/cookie.js"></script>
+		<script>
+			$.support.cors = true;
+			var cver = '3.2.0';
+			var theForm = document.getElementById( 'theForm' );
+			var messageEl = theForm.querySelector( '.final-message' );
+			var id = $.cookie('calendarioUniqueID');
+			var obj = new stepsForm( theForm, {
+				onSubmit : function( form ) {
+					// hide form
+					classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+					
+					var form = $( form );
+
+					$.post('http://calendario.t15.org/unique/', form.serialize())
+					.always(function(data){
+						messageEl = theForm.querySelector( '.final-message' );
+						messageEl.innerHTML = 'Your unique id is <b>' + data + '</b></br>Thank you! We\'ll be in touch.';
+						if( data.indexOf( cver ) == -1) {
+							messageEl.innerHTML = messageEl.innerHTML + '</br><a id="update" href="#">Update ID</a>';
+						}
+						classie.addClass( messageEl, 'show' );
+						$.cookie('calendarioUniqueID', data, { expires: 365 });
+					});
+
+					// let's just simulate something...
+				}
+			} );
+			messageEl.innerHTML = 'Your unique id is <b>' + id + '</b></br>Thank you! We\'ll be in touch.';
+			if(id) { 
+				classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
+				if( id.indexOf( cver ) == -1) {
+					messageEl.innerHTML = messageEl.innerHTML + '</br><a id="update" href="#">Update ID</a>';
+				}
+				classie.addClass( messageEl, 'show' );
+				$( messageEl ).find( 'a#update' ).on('click', function(e) {
+					e.preventDefault();
+					$( messageEl ).removeClass( 'show' );
+					$( theForm.querySelector( '.simform-inner' ) ).removeClass( 'hide' );
+				});
+			}
+		</script>
+	</body>
+</html>
