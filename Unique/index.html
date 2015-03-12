@@ -54,7 +54,6 @@
 		<script src="js/cookie.js"></script>
 		<script>
 			$.support.cors = true;
-			var cver = '3.2.0';
 			var theForm = document.getElementById( 'theForm' );
 			var messageEl = theForm.querySelector( '.final-message' );
 			var id = $.cookie('calendarioUniqueID');
@@ -69,9 +68,6 @@
 					.always(function(data){
 						messageEl = theForm.querySelector( '.final-message' );
 						messageEl.innerHTML = 'Your unique id is <b>' + data + '</b></br>Thank you! We\'ll be in touch.';
-						if( data.indexOf( cver ) == -1) {
-							messageEl.innerHTML = messageEl.innerHTML + '</br><a id="update" href="#">Update ID</a>';
-						}
 						classie.addClass( messageEl, 'show' );
 						$.cookie('calendarioUniqueID', data, { expires: 365 });
 					});
@@ -82,15 +78,7 @@
 			messageEl.innerHTML = 'Your unique id is <b>' + id + '</b></br>Thank you! We\'ll be in touch.';
 			if(id) { 
 				classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
-				if( id.indexOf( cver ) == -1) {
-					messageEl.innerHTML = messageEl.innerHTML + '</br><a id="update" href="#">Update ID</a>';
-				}
 				classie.addClass( messageEl, 'show' );
-				$( messageEl ).find( 'a#update' ).on('click', function(e) {
-					e.preventDefault();
-					$( messageEl ).removeClass( 'show' );
-					$( theForm.querySelector( '.simform-inner' ) ).removeClass( 'hide' );
-				});
 			}
 		</script>
 	</body>
