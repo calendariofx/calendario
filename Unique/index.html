@@ -63,16 +63,27 @@
 					classie.addClass( theForm.querySelector( '.simform-inner' ), 'hide' );
 					
 					var form = $( form );
+					
+					messageEl = theForm.querySelector( '.final-message' );
+					messageEl.innerHTML = '.'
+					classie.addClass( messageEl, 'show' );
+					var loader =  setInterval(function(){
+						if(messageEl.innerHTML === '. . .') messageEl.innerHTML = '.';
+						else messageEl.innerHTML += ' .';
+					}, 800);
 
 					$.post('http://calendario.t15.org/unique/', form.serialize())
-					.always(function(data){
-						messageEl = theForm.querySelector( '.final-message' );
+					.always(function(){
+						clearInterval(loader);
+					})
+					.done(function(data){
 						messageEl.innerHTML = 'Your unique id is <b>' + data + '</b></br>Thank you! We\'ll be in touch.';
-						classie.addClass( messageEl, 'show' );
-						$.cookie('calendarioUniqueID', data, { expires: 365 });
+						$.cookie('calendarioUniqueID', data, { expires: 365 * 20 });
+					})
+					.fail(function() {
+						messageEl = theForm.querySelector( '.final-message' );
+						messageEl.innerHTML = 'Something is wrong with us! Try again later!';
 					});
-
-					// let's just simulate something...
 				}
 			} );
 			messageEl.innerHTML = 'Your unique id is <b>' + id + '</b></br>Thank you! We\'ll be in touch.';
