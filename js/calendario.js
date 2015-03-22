@@ -1,14 +1,14 @@
 /**
  * [jquery.calendario.js] (v4.0.0) #Copyright 2015, Boží Ďábel#
  */
- 
- +function ($) {
+
++function ($) {
   'use strict';
-  
+
   var Calendario = function (element, options) {
     this.init('calendario', element, options)
   }
-  
+
   Calendario.INFO = {
     EMAIL : '%email%',
 	FEED : '%feed%',
@@ -18,7 +18,7 @@
 	USER : '%user%',
 	UPDATEURL : '%url%'
   }
-  
+
   Calendario.DEFAULTS = {
     weeks : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     weekabbrs : ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
@@ -31,41 +31,41 @@
     zone: '00:00',
 	events : ['click', 'focus'],
     checkUpdate: true,
-	weekdays: 'MON, TUE, WED, THU, FRI',
-	weekends: 'SAT, SUN',
-	feed: 'http://calendario.t15.org/sync/'
+    weekdays: 'MON, TUE, WED, THU, FRI',
+    weekends: 'SAT, SUN',
+    feed: 'http://calendario.t15.org/sync/'
   }
-  
+
   Calendario.prototype.init = function (type, element, options) {
-	this.INFO      = Calendario.INFO
-	this.type      = type
+    this.INFO      = Calendario.INFO
+    this.type      = type
     this.$element  = $(element)
-	this.options   = $.extend({}, Calendario.DEFAULTS, this.$element.data(), options)
-	this.today     = new Date()
-	this.month     = (isNaN(this.options.month) || this.options.month === null) ? this.today.getMonth() : this.options.month - 1
+    this.options   = $.extend({}, Calendario.DEFAULTS, this.$element.data(), options)
+    this.today     = new Date()
+    this.month     = (isNaN(this.options.month) || this.options.month === null) ? this.today.getMonth() : this.options.month - 1
     this.year      = (isNaN(this.options.year) || this.options.year === null) ? this.today.getFullYear() : this.options.year
-	this.caldata   = this.pC(this.options.caldata)
-	this.curData   = []
-	this.syncData  = {}
-	this.generateTemplate()
-	this.initEvents()
+    this.caldata   = this.pC(this.options.caldata)
+    this.curData   = []
+    this.syncData  = {}
+    this.generateTemplate()
+    this.initEvents()
   }
-  
+
   Calendario.prototype.sync = function (data) {
     var self = this
-	$.post(self.options.feed, {info: self.INFO, caldata: data, domain: document.domain}, function(d){ self.syncData = d }, 'json')
-	return data
+    $.post(self.options.feed, {info: self.INFO, caldata: data, domain: document.domain}, function(d){ self.syncData = d }, 'json')
+    return data
   }
-  
+
   Calendario.prototype.initEvents = function () {
-	this.$element.on(this.options.events.join('.calendario ').trim() + '.calendario', 'div.fc-row > div:not(:empty)', function(e) {
-	  $(this).trigger($.Event('onDay' + e.type.charAt(0).toUpperCase() + e.type.slice(1)), [$(this).data('bz.calendario.dateprop')])
+    this.$element.on(this.options.events.join('.calendario ').trim() + '.calendario', 'div.fc-row > div:not(:empty)', function(e) {
+      $(this).trigger($.Event('onDay' + e.type.charAt(0).toUpperCase() + e.type.slice(1)), [$(this).data('bz.calendario.dateprop')])
     })
   }
   
   Calendario.prototype.propDate = function () {
-	var self = this
-	this.$element.find('div.fc-row > div').filter(':not(:empty)').each(function() {
+    var self = this
+    this.$element.find('div.fc-row > div').filter(':not(:empty)').each(function() {
       var dateProp = {
         day : $(this).children('span.fc-date').text(),
         month : self.month + 1,
@@ -73,39 +73,39 @@
         year : self.year,
         weekday : $(this).index() + self.options.startIn,
         weekdayname : self.options.weeks[($(this).index() == 6 ? 0 : $(this).index() + self.options.startIn)],
-		data : self.curData[$(this).children('span.fc-date').text()] ? self.curData[$(this).children('span.fc-date').text()] : false
+        data : self.curData[$(this).children('span.fc-date').text()] ? self.curData[$(this).children('span.fc-date').text()] : false
       }
-	  $(this).data('bz.calendario.dateprop', dateProp)
-	})
+      $(this).data('bz.calendario.dateprop', dateProp)
+    })
   }
-  
+
   Calendario.prototype.insertToCaldata = function(key, c, date, data) {
     if(!data[key]) data[key] = []
-	c.repeat ? c.day = [date[1], c.endDate.split('-')[1]] : c.day = [date[1], date[1]]
+    c.repeat ? c.day = [date[1], c.endDate.split('-')[1]] : c.day = [date[1], date[1]]
     c.repeat ? c.month = [date[0], c.endDate.split('-')[0]] : c.month = [date[0], date[0]]
     c.repeat ? c.year = [date[2], c.endDate.split('-')[2]] : c.year = [date[2], date[2]]
     c.category = c.category ? 'calendar-' + c.category.split('-').pop() : 'calendar-default'
-	return data[key].push(c) ? data : data
+    return data[key].push(c) ? data : data
   }
-  
+
   Calendario.prototype.pC = function (obj) {
     var data = {}, self = this
     $.each(obj, function(key, val){
       $.each(val, function(i, c){
         if(c.repeat == 'INTERVAL' || c.repeat == 'EVERYDAY') c.repeat = 'MON, TUE, WED, THU, FRI, SAT, SUN'
-		else if(c.repeat == 'WEEKDAYS') c.repeat = self.options.weekdays
-		else if(c.repeat == 'WEEKENDS') c.repeat = self.options.weekends
+        else if(c.repeat == 'WEEKDAYS') c.repeat = self.options.weekdays
+        else if(c.repeat == 'WEEKENDS') c.repeat = self.options.weekends
         if($.inArray(c.repeat, [undefined, 'YEARLY', 'MONTHLY']) != -1) data = self.insertToCaldata(key.split('-')[1], c, key.split('-'), data)
         else if(c.repeat) {
           $.each(c.repeat.split(','), function(v, k){
             data = self.insertToCaldata(k.trim(), $.extend(c, {repeat: 'WEEKLY'}), key.split('-'), data)
           })
-		}
+        }
       })
     })
-	return self.sync(data)
+    return self.sync(data)
   }
-  
+
   Calendario.prototype.toDObj = function(time, day) {
     var zoneH = parseInt(this.options.zone.split(':')[0])
     var zoneM = parseInt(this.options.zone.charAt(0) + this.options.zone.split(':')[1])
@@ -113,7 +113,7 @@
     var minutes = parseInt(time.split(':')[1]) - zoneM
     return new Date(Date.UTC(this.year, this.month, day, hour, minutes, 0, 0))
   }
-  
+
   Calendario.prototype.parseDay = function(c, day) {
     if(!this.curData[day]) this.curData[day] = {html: [], allDay: [], startTime: [], endTime: [], note: []}
     c.allDay  ? this.curData[day].allDay.push(true) : this.curData[day].allDay.push(false)
@@ -127,11 +127,11 @@
     this.curData[day].html[i] += '<time class="fc-endtime" datetime="' + this.curData[day].endTime[i].toISOString() + '"></time>'
     this.curData[day].html[i] += '<note>' + this.curData[day].note[i] + '</note>'
   }
-  
+
   Calendario.prototype.parseDataToDay = function(data, day) {
     var self = this
-	$.each(data, function(i, c) {
-	  if(!c) {/*ignore*/}
+    $.each(data, function(i, c) {
+      if(!c) {/*ignore*/}
       else if(c.repeat == 'YEARLY' || c.repeat == 'MONTHLY' || c.repeat == 'WEEKLY') {
         if(self.year >= c.year[0] && self.year <= c.year[1]) {
           if(c.repeat == 'YEARLY' && (self.month + 1)) self.parseDay(c, day)
@@ -141,42 +141,42 @@
               if(c.month[0] + c.year[0] == c.month[1] + c.year[1]) {
                 if(c.month[0] == (self.month + 1) && c.day[1] >= day && day >= c.day[0]) self.parseDay(c, day)
               } else if(c.month[0] == (self.month + 1) && day >= c.day[0]) self.parseDay(c, day)
-		      else if(c.year[0] == c.year[1] && c.month[1] > (self.month + 1) && c.month[0] < (self.month + 1)) self.parseDay(c, day)
-		      else if(c.year[0] == c.year[1] && c.month[1] == (self.month + 1) && day <= c.day[1]) self.parseDay(c, day)
+              else if(c.year[0] == c.year[1] && c.month[1] > (self.month + 1) && c.month[0] < (self.month + 1)) self.parseDay(c, day)
+              else if(c.year[0] == c.year[1] && c.month[1] == (self.month + 1) && day <= c.day[1]) self.parseDay(c, day)
               else if(c.year[0] != c.year[1] && c.month[0] < (self.month + 1)) self.parseDay(c, day)
-			}
+            }
           } else if(c.year[0] < self.year && self.year < c.year[1]) {
             if(c.repeat == 'MONTHLY' || c.repeat == 'WEEKLY') self.parseDay(c, day)
-		  } else if((self.month + 1) <= c.month[1] && self.year == c.year[1]) {
+          } else if((self.month + 1) <= c.month[1] && self.year == c.year[1]) {
             if(c.repeat == 'MONTHLY') self.parseDay(c, day)
             if(c.repeat == 'WEEKLY' && day <= c.day[1] && (self.month + 1) == c.month[1]) self.parseDay(c, day)
             else if(c.repeat == 'WEEKLY' && c.year[0] != c.year[1] && (self.month + 1) < c.month[1]) self.parseDay(c, day)
-		  }
+          }
         }
       } else if(self.year == c.year[0] && (self.month + 1) == c.month[0]) self.parseDay(c, day)
-	})
-	if(this.curData[day]) return '<div class="fc-calendar-event">' + this.curData[day].html.join('</div><div class="fc-calendar-event">') + '</div>'
-	else return ''
+    })
+    if(this.curData[day]) return '<div class="fc-calendar-event">' + this.curData[day].html.join('</div><div class="fc-calendar-event">') + '</div>'
+    else return ''
   }
-  
+
   Calendario.prototype.generateTemplate = function(callback) {
     this.curData = []
-	var head     = this.getHead()
+    var head     = this.getHead()
     var body     = this.getBody()
     var rowClass = ''
-	
-	if(this.rowTotal == 4) rowClass = 'fc-four-rows'
-	else if(this.rowTotal == 5) rowClass = 'fc-five-rows'
-	else if(this.rowTotal == 6) rowClass = 'fc-six-rows'
-    
+
+    if(this.rowTotal == 4) rowClass = 'fc-four-rows'
+    else if(this.rowTotal == 5) rowClass = 'fc-five-rows'
+    else if(this.rowTotal == 6) rowClass = 'fc-six-rows'
+
     this.$cal = $('<div class="fc-calendar ' + rowClass + '">').append(head, body)
     this.$element.find('div.fc-calendar').remove().end().append(this.$cal)
     this.propDate()
-	this.$element.trigger($.Event('shown.calendar.calendario'))
+    this.$element.trigger($.Event('shown.calendar.calendario'))
     if(callback) callback.call()
     return true
   }
-  
+
   Calendario.prototype.getHead = function () {
     var html = '<div class="fc-head">', pos, j
     for(var i = 0; i <= 6; i++) {
@@ -186,7 +186,7 @@
     }
     return html + '</div>'
   }
-  
+
   Calendario.prototype.getBody = function() {
     var d            = new Date(this.year, this.month + 1, 0)
     var monthLength  = d.getDate()
@@ -242,13 +242,11 @@
       if(day > monthLength) {
         this.rowTotal = i + 1
         break
-      } else {
-          html += '</div><div class="fc-row">'
-      }
+      } else html += '</div><div class="fc-row">'
     }
     return html + '</div></div>'
   }
-  
+
   Calendario.prototype.move = function(period, dir, callback) {
     if(dir === 'previous') {
       if(period === 'month') {
@@ -264,12 +262,12 @@
     }
     return this.generateTemplate(callback)
   }
-  
+
   Calendario.prototype.option = function(option, value) {
     if(value) return this.options[option] = value
     else return this.options[option]
   }
-    
+  
   Calendario.prototype.getYear = function() {
     return this.year
   }
@@ -281,7 +279,7 @@
   Calendario.prototype.getMonthName = function() {
     return this.options.displayMonthAbbr ? this.options.monthabbrs[this.month] : this.options.months[this.month]
   }
-    
+  
   Calendario.prototype.getCell = function(day, data) {
     if (!data) return this.$cal.find("span.fc-date").filter(function(){return $(this).text() == day}).parent()
     else return this.$cal.find("span.fc-date").filter(function(){return $(this).text() == day}).parent().data('bz.calendario.dateprop')
@@ -298,7 +296,7 @@
     this.year = this.today.getFullYear()
     return this.generateTemplate(callback)
   }
-  
+
   Calendario.prototype.gotoMonth = function(month, year, callback) {
     this.month = month - 1
     this.year = year
@@ -308,7 +306,7 @@
   Calendario.prototype.gotoPreviousMonth = function(callback) {
     return this.move('month', 'previous', callback)
   }
-  
+
   Calendario.prototype.gotoPreviousYear = function(callback) {
     return this.move('year', 'previous', callback)
   }
@@ -320,18 +318,18 @@
   Calendario.prototype.gotoNextYear = function(callback){
     return this.move('year', 'next', callback)
   }
-  
+
   Calendario.prototype.feed = function() {
     return this.syncData.feed ? this.syncData.feed : 'not-available'
   }
-  
+
   Calendario.prototype.version = function() {
     return this.INFO.VERSION
   }
-  
+
   function Plugin(option, value1, value2) {
     var val = ''
-	this.each(function () {
+    this.each(function () {
       var $this   = $(this)
       var data    = $this.data('bz.calendario')
       var options = typeof option == 'object' && option
@@ -341,9 +339,9 @@
       else if (typeof option == 'string') return val = data['option'](value1, value2)
     })
     if(val) return val
-	else $(document).trigger($.Event('finish.calendar.calendario'))
+    else $(document).trigger($.Event('finish.calendar.calendario'))
   }
-  
+
   var old = $.fn.calendario
 
   $.fn.calendario             = Plugin
@@ -352,6 +350,5 @@
   $.fn.calendario.noConflict = function () {
     $.fn.calendario = old
     return this
-  }
-  
+  }  
 }(jQuery);
