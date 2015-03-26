@@ -54,12 +54,6 @@
 					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
 				}
 				
-				$('#calendar').on('shown.calendar.calendario', function(e){
-					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
-						console.log(dateprop);
-					});
-                });
-				
 				$(document).on('finish.calendar.calendario', function(e){
                     $( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
 					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
