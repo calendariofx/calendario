@@ -34,14 +34,14 @@ Notable Changes
 
 Requirements
 ============
-* jQuery (Required) [(GET!)[http://code.jquery.com/]]
+* jQuery (Required) ((GET!)[http://code.jquery.com/])
 * Event File (Optional)
 * Latest Mordern Browser (Required)
 
 Installation
 ============
 ```html
-<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/calendario.min.js"></script>
 <script type="text/javascript" src="js/data.js"></script>
 ```
