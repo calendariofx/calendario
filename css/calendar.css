@@ -96,11 +96,7 @@
 	text-align: right;
 }
 
-<<<<<<< HEAD
-.fc-calendar .fc-row > div time {
-=======
 .fc-calendar .fc-row > div time, .fc-calendar .fc-row > div note {
->>>>>>> master
 	display: none;
 }
 

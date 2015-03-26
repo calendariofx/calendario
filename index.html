@@ -9,18 +9,11 @@
 		<meta name="description" content="Flexible Calendar with jQuery and CSS3" />
 		<meta name="keywords" content="responsive, calendar, jquery, plugin, full page, flexible, javascript, css3, media queries" />
 		<meta name="author" content="Codrops" />
-<<<<<<< HEAD
-		<link rel="shortcut icon" href="./images/favicon.ico"> 
-		<link rel="stylesheet" type="text/css" href="css/demo.css" />
-		<link rel="stylesheet" type="text/css" href="css/calendar.css" />
-		<link rel="stylesheet" type="text/css" href="css/custom_1.css" />
-=======
 		<link rel="shortcut icon" href="../favicon.ico"> 
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/calendar.css" />
 		<link rel="stylesheet" type="text/css" href="css/custom_1.css" />
 		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
->>>>>>> master
 		<script src="js/modernizr.custom.63321.js"></script>
 	</head>
 	<body>
@@ -35,12 +28,7 @@
 			<div class="custom-calendar-wrap custom-calendar-full">
 				<div class="custom-header clearfix">
 					<h2>Calendario <span>
-<<<<<<< HEAD
-						<span>Demo 1</span> | <a href="index2.html">Demo 2</a> | <a href="index3.html">Demo 3</a>
-						 | <a href="index4.html">Demo 4</a></span>
-=======
 						<span>Demo 1</span> | <a href="index2.html">Demo 2</a> | <a href="index3.html">Demo 3</a></span>
->>>>>>> master
 					</h2>
 					<h3 class="custom-month-year">
 						<span id="custom-month" class="custom-month"></span>
@@ -55,57 +43,6 @@
 				<div id="calendar" class="fc-calendar-container"></div>
 			</div>
 		</div><!-- /container -->
-<<<<<<< HEAD
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.calendario.js"></script>
-		<script type="text/javascript" src="js/data.js"></script>
-		<script type="text/javascript">	
-			$(function() {
-			
-				var cal = $( '#calendar' ).calendario( {
-						onDayClick : function( $el, $contentEl, dateProperties ) {
-
-							for( var key in dateProperties ) {
-								console.log( key + ' = ' + dateProperties[ key ] );
-							}
-
-						},
-						caldata : codropsEvents
-					} ),
-					$month = $( '#custom-month' ).html( cal.getMonthName() ),
-					$year = $( '#custom-year' ).html( cal.getYear() );
-
-				$( '#custom-next' ).on( 'click', function() {
-					cal.gotoNextMonth( updateMonthYear );
-				} );
-				$( '#custom-prev' ).on( 'click', function() {
-					cal.gotoPreviousMonth( updateMonthYear );
-				} );
-				$( '#custom-current' ).on( 'click', function() {
-					cal.gotoNow( updateMonthYear );
-				} );
-
-				function updateMonthYear() {				
-					$month.html( cal.getMonthName() );
-					$year.html( cal.getYear() );
-				}
-
-				// you can also add more data later on. As an example:
-				/*
-				someElement.on( 'click', function() {
-					
-					cal.setData( {
-						'03-01-2013' : '<a href="#">testing</a>',
-						'03-10-2013' : '<a href="#">testing</a>',
-						'03-12-2013' : '<a href="#">testing</a>'
-					} );
-					// goes to a specific month/year
-					cal.goto( 3, 2013, updateMonthYear );
-
-				} );
-				*/
-			
-=======
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 		<script type="text/javascript" src="js/calendario.js"></script>
 		<script type="text/javascript" src="js/data.js"></script>
@@ -135,7 +72,6 @@
 					caldata : events,
 					fillEmpty : false
 				});
->>>>>>> master
 			});
 		</script>
 	</body>
