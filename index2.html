@@ -9,7 +9,11 @@
         <meta name="description" content="Flexible Calendar with jQuery and CSS3" />
         <meta name="keywords" content="responsive, calendar, jquery, plugin, full page, flexible, javascript, css3, media queries" />
         <meta name="author" content="Codrops" />
+<<<<<<< HEAD
         <link rel="shortcut icon" href="./images/favicon.ico"> 
+=======
+        <link rel="shortcut icon" href="../favicon.ico"> 
+>>>>>>> master
         <link rel="stylesheet" type="text/css" href="css/demo.css" />
         <link rel="stylesheet" type="text/css" href="css/calendar.css" />
         <link rel="stylesheet" type="text/css" href="css/custom_2.css" />
@@ -30,7 +34,10 @@
                     <a href="index.html">Demo 1</a>
                     <a class="current-demo" href="index2.html">Demo 2</a>
                     <a href="index3.html">Demo 3</a>
+<<<<<<< HEAD
                     <a href="index4.html">Demo 4</a>
+=======
+>>>>>>> master
                 </nav>
             </header>
             <section class="main">
@@ -49,6 +56,7 @@
                 </div>
             </section>
         </div><!-- /container -->
+<<<<<<< HEAD
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
         <script type="text/javascript" src="js/jquery.calendario.js"></script>
         <script type="text/javascript" src="js/data.js"></script>
@@ -123,6 +131,75 @@
                     }
 
                 }
+=======
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="js/calendario.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript"> 
+            $(function() {
+                function updateMonthYear() {
+					$( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
+				}
+				
+				$(document).on('finish.calendar.calendario', function(e){
+                    $( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
+					$( '#custom-next' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoNextMonth', updateMonthYear);
+					} );
+					$( '#custom-prev' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoPreviousMonth', updateMonthYear);
+					} );
+					$( '#custom-current' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoNow', updateMonthYear);
+					} );
+                });
+				
+				$('#calendar').on('shown.calendar.calendario', function(){
+					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
+						console.log(dateprop);
+						if(dateprop.data.content.length > 0 ) {
+							showEvents(dateprop.data.html, dateprop);
+						}
+					});
+				});
+            
+                var transEndEventNames = {
+                    'WebkitTransition' : 'webkitTransitionEnd',
+                    'MozTransition' : 'transitionend',
+                    'OTransition' : 'oTransitionEnd',
+                    'msTransition' : 'MSTransitionEnd',
+                    'transition' : 'transitionend'
+                },
+                transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
+                $wrapper = $( '#custom-inner' );
+
+                function showEvents( contentEl, dateprop ) {
+                    hideEvents();
+                    var $events = $( '<div id="custom-content-reveal" class="custom-content-reveal"><h4>Events for ' + dateprop.monthname + ' '
+					+ dateprop.day + ', ' + dateprop.year + '</h4></div>' ),
+                    $close = $( '<span class="custom-content-close"></span>' ).on( 'click', hideEvents);
+                    $events.append( contentEl.join('') , $close ).insertAfter( $wrapper );
+                    setTimeout( function() {
+                        $events.css( 'top', '0%' );
+                    }, 25);
+                }
+				
+                function hideEvents() {
+                    var $events = $( '#custom-content-reveal' );
+                    if( $events.length > 0 ) {   
+                        $events.css( 'top', '100%' );
+                        Modernizr.csstransitions ? $events.on( transEndEventName, function() { $( this ).remove(); } ) : $events.remove();
+                    }
+                }
+				
+				$( '#calendar' ).calendario({
+                    caldata : events,
+                    displayWeekAbbr : true,
+                    events: ['click', 'focus']
+                });
+>>>>>>> master
             
             });
         </script>

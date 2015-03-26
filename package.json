@@ -1,6 +1,23 @@
 {
   "name": "Calendario",
+<<<<<<< HEAD
   "description": "Flexible Calendar with jQuery and CSS3",
   "author": "Devi Prasad <deviprsd21@gmail.com>",
   "version": "3.2.0"
 }
+=======
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/deviprsd21/Calendario.git"
+  },
+  "description": "Flexible Calendar with jQuery and CSS3",
+  "author": "https://twitter.com/deviprsd21",
+  "version": "3.2.0",
+  "devDependencies": {
+    "jshint": "^2.6.0"
+  },
+  "scripts": {
+    "test": "./node_modules/jshint/bin/jshint js/*.js"
+  }
+}
+>>>>>>> master
