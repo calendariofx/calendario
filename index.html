@@ -13,6 +13,7 @@
 		<link rel="stylesheet" type="text/css" href="css/demo.css" />
 		<link rel="stylesheet" type="text/css" href="css/calendar.css" />
 		<link rel="stylesheet" type="text/css" href="css/custom_1.css" />
+		<link rel="stylesheet" type="text/css" href="css/jquery.mCustomScrollbar.css" />
 		<script src="js/modernizr.custom.63321.js"></script>
 	</head>
 	<body>
@@ -43,55 +44,41 @@
 				<div id="calendar" class="fc-calendar-container"></div>
 			</div>
 		</div><!-- /container -->
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-		<script type="text/javascript" src="js/jquery.calendario.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script type="text/javascript" src="js/calendario.min.js"></script>
 		<script type="text/javascript" src="js/data.js"></script>
 		<script type="text/javascript">	
-			$(function() {
-			
-				var cal = $( '#calendar' ).calendario( {
-						onDayClick : function( $el, $contentEl, dateProperties ) {
-
-							for( var key in dateProperties ) {
-								console.log( key + ' = ' + dateProperties[ key ] );
-							}
-
-						},
-						caldata : codropsEvents
-					} ),
-					$month = $( '#custom-month' ).html( cal.getMonthName() ),
-					$year = $( '#custom-year' ).html( cal.getYear() );
-
-				$( '#custom-next' ).on( 'click', function() {
-					cal.gotoNextMonth( updateMonthYear );
-				} );
-				$( '#custom-prev' ).on( 'click', function() {
-					cal.gotoPreviousMonth( updateMonthYear );
-				} );
-				$( '#custom-current' ).on( 'click', function() {
-					cal.gotoNow( updateMonthYear );
-				} );
-
-				function updateMonthYear() {				
-					$month.html( cal.getMonthName() );
-					$year.html( cal.getYear() );
+			$(function() {				
+				function updateMonthYear() {
+					$( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
 				}
-
-				// you can also add more data later on. As an example:
-				/*
-				someElement.on( 'click', function() {
-					
-					cal.setData( {
-						'03-01-2013' : '<a href="#">testing</a>',
-						'03-10-2013' : '<a href="#">testing</a>',
-						'03-12-2013' : '<a href="#">testing</a>'
+				
+				$('#calendar').on('shown.calendar.calendario', function(e){
+					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
+						console.log(dateprop);
+					});
+                });
+				
+				$(document).on('finish.calendar.calendario', function(e){
+                    $( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
+					$( '#custom-next' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoNextMonth', updateMonthYear);
 					} );
-					// goes to a specific month/year
-					cal.goto( 3, 2013, updateMonthYear );
-
-				} );
-				*/
-			
+					$( '#custom-prev' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoPreviousMonth', updateMonthYear);
+					} );
+					$( '#custom-current' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoNow', updateMonthYear);
+					} );
+                });
+				
+				$( '#calendar' ).calendario({
+					checkUpdate : false,
+					caldata : events,
+					fillEmpty : false
+				});
 			});
 		</script>
 	</body>
