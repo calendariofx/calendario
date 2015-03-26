@@ -31,3 +31,20 @@ Notable Changes
 * Multiple Events : [Mattias Lyckne](https://github.com/olyckne) ([Pull Request - #22](https://github.com/codrops/Calendario/pull/22))
 * Flexibility In-built : [Boží Ďábel](https://github.com/deviprsd21) ([Pull Request - #23](https://github.com/codrops/Calendario/pull/23))
 * Now with Time : [Boží Ďábel](https://github.com/deviprsd21) ([Pull Request - #25](https://github.com/codrops/Calendario/pull/25))
+
+Requirements
+============
+* jQuery (Required) [(GET!)[http://code.jquery.com/]]
+* Event File (Optional)
+* Latest Mordern Browser (Required)
+
+Installation
+============
+```javascript
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="js/calendario.min.js"></script>
+    <script type="text/javascript" src="js/data.js"></script>
+```
+
+How to Use
+==========
