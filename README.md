@@ -48,3 +48,43 @@ Installation
 
 How to Use
 ==========
+
+##### Initialize (All Options Mentioned)
+```javascript
+$("#calendar").calendario({
+    month: 02,
+	year: 2012,
+    displayWeekAbbr : false,
+    displayMonthAbbr : false,
+    startIn : 1,
+    fillEmpty: true,
+    zone: '00:00',
+	events : ['click', 'focus'],
+    checkUpdate: true,
+    weekdays: 'MON, TUE, WED, THU, FRI',
+    weekends: 'SAT, SUN',
+    feed: 'http://calendario.t15.org/sync/'
+});
+```
+
+##### Access Calendario Functions
+```javascript
+$('#calendar').calendario('getMonthName');
+
+/* All Accessible Methods */
+$('#calendar').calendario('getYear'); //[*]
+$('#calendar').calendario('getMonth'); //[*]
+$('#calendar').calendario('getMonthName'); //[*]
+$('#calendar').calendario('getCell', date, returnData); //[*]
+$('#calendar').calendario('setData', data, clearData); //[#]
+$('#calendar').calendario('gotoNow', callback); //[#]
+$('#calendar').calendario('gotoMonth', month, year, callback); //[#]
+$('#calendar').calendario('gotoPreviousMonth', callback); //[#]
+$('#calendar').calendario('gotoPreviousYear', callback); //[#]
+$('#calendar').calendario('gotoNextMonth', callback); //[#]
+$('#calendar').calendario('gotoNextYear', callback); //[#]
+$('#calendar').calendario('feed'); //[*]
+$('#calendar').calendario('version'); //[*]
+```
+**[*] Returning Functions**
+**[#] Non-returning Functions**

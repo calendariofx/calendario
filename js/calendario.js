@@ -329,7 +329,7 @@
     return this.INFO.VERSION
   }
 
-  function Plugin(option, value1, value2) {
+  function Plugin(option, value1, value2, value3) {
     var val = ''
     this.each(function () {
       var $this   = $(this)
@@ -337,7 +337,7 @@
       var options = typeof option == 'object' && option
 
       if (!data) $this.data('bz.calendario', (data = new Calendario(this, options)))
-      if (typeof option == 'string' && $.isFunction(data[option])) return val = data[option](value1, value2)
+      if (typeof option == 'string' && $.isFunction(data[option])) return val = data[option](value1, value2, value3)
       else if (typeof option == 'string') return val = data['option'](value1, value2)
     })
     if(val) return val
