@@ -1,5 +1,5 @@
 Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=master)](https://travis-ci.org/deviprsd21/Calendario)
-=========
+=========================================================================================================================================
 
 A jQuery calendar plugin for creating flexible calendars.
 
@@ -24,3 +24,10 @@ If you write about some of our work we would like you to add a link back to us. 
 Please [contact](http://tympanus.net/codrops/contact/) us, if you’d like to translate articles and re-publish them.
 
 Summarized, use it freely, integrate it, make it your own, but don’t copy and paste our work and sell it or claim that it’s yours, **stay fair.**
+
+Notable Changes
+===============
+* Calendario gets more flexible : Boží Ďábel (https://github.com/deviprsd21) (https://github.com/codrops/Calendario/pull/11)
+* Multiple Events : Mattias Lyckne (https://github.com/olyckne) (https://github.com/codrops/Calendario/pull/22)
+* Flexibility In-built : Boží Ďábel (https://github.com/deviprsd21) (https://github.com/codrops/Calendario/pull/23)
+* Now with Time : Boží Ďábel (https://github.com/deviprsd21) (https://github.com/codrops/Calendario/pull/25)
