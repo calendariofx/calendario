@@ -1,39 +1,30 @@
 <!DOCTYPE html>
-<!--[if IE 9]><html class="no-js ie9"><![endif]-->
-<!--[if gt IE 9]><!--><html class="no-js"><!--<![endif]-->
+<html lang="en" class="no-js">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
         <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>Flexible Calendar</title>
-        <meta name="description" content="Flexible Calendar with jQuery and CSS3" />
-        <meta name="keywords" content="responsive, calendar, jquery, plugin, full page, flexible, javascript, css3, media queries" />
+        <meta name="description" content="Blueprint: Vertical Timeline" />
+        <meta name="keywords" content="timeline, vertical, layout, style, component, web development, template, responsive" />
         <meta name="author" content="Codrops" />
         <link rel="shortcut icon" href="../favicon.ico">
-        <link rel="stylesheet" type="text/css" href="css/demo.css" />
+        <link rel="stylesheet" type="text/css" href="css/timeline.css" />
         <link rel="stylesheet" type="text/css" href="css/calendar.css" />
         <link rel="stylesheet" type="text/css" href="css/custom_3.css" />
         <script src="js/modernizr.custom.63321.js"></script>
     </head>
     <body>
-        <div class="container"> 
+        <div class="container">
             <!-- Codrops top bar -->
-            <div class="codrops-top clearfix">
-                <a href="http://tympanus.net/Development/Stapel/"><strong>&laquo; Previous Demo: </strong>Adaptive Thumbnail Pile Effect</a>
+            <div class="codrops-top clearfix" style="text-align: center;">
+                <a href="http://tympanus.net/Development/Stapel/" style="float: left"><strong>&laquo; Previous Demo: </strong>Adaptive Thumbnail Pile Effect</a>
+                <a id="view" href="#">View Calendar</a>
                 <span class="right">
                     <a href="http://tympanus.net/codrops/?p=12416"><strong>Back to the Codrops Article</strong></a>
                 </span>
             </div><!--/ Codrops top bar -->
-            <header class="clearfix">
-                <h1>Calendario <span>It just got more flexible</span></h1>
-                <nav class="codrops-demos">
-                    <a href="index.html">Demo 1</a>
-                    <a href="index2.html">Demo 2</a>
-                    <a class="current-demo" href="index3.html">Demo 3</a>
-                    <a href="index4.html">Demo 4</a>
-                </nav>
-            </header>
-            <section class="main">
+            <div class="main">
                 <div class="custom-calendar-wrap">
                     <div id="custom-inner" class="custom-inner">
                         <div class="custom-header clearfix">
@@ -47,71 +38,185 @@
                         <div id="calendar" class="fc-calendar-container"></div>
                     </div>
                 </div>
-            </section>
-        </div><!-- /container -->
-        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script type="text/javascript" src="js/jquery.calendario.js"></script>
-        <script type="text/javascript" src="js/data.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-        <script type="text/javascript"> 
-            $(function() {
-                var pop_title = '', pop_content = '';
-                $(document).popover({
-                    delay: { show: 100, hide: 200 },
-                    html: true,
-                    trigger: 'hover',
-                    selector: 'div.fc-content',
-                    placement: 'auto',
-                    content: function() {
-                                return pop_content;
-                             },
-                    title: function() {
-                                return pop_title;
-                           },
-                    container: 'body'
-                });
-                var transEndEventNames = {
-                        'WebkitTransition' : 'webkitTransitionEnd',
-                        'MozTransition' : 'transitionend',
-                        'OTransition' : 'oTransitionEnd',
-                        'msTransition' : 'MSTransitionEnd',
-                        'transition' : 'transitionend'
-                    },
-                    transEndEventName = transEndEventNames[ Modernizr.prefixed( 'transition' ) ],
-                    $wrapper = $( '#custom-inner' ),
-                    $calendar = $( '#calendar' ),
-                    cal = $calendar.calendario({
-                        onDayMouseenter : function( $el, data, dateProperties ) {
-                            if( data.content.length > 0 ) {
-                                pop_title = dateProperties.monthname + ' ' + dateProperties.day + ', ' + dateProperties.year;
-                                pop_content = data.content.join('');
-                                cal.feed(logFeed);
-                            }
-                        },
-                        caldata : codropsEvents,
-                        events: 'mouseenter',
-                        displayWeekAbbr : true,
-                        fillEmpty: false
-                    }),
-                    $month = $( '#custom-month' ).html( cal.getMonthName() ),
-                    $year = $( '#custom-year' ).html( cal.getYear() );
+                <header class="clearfix">
+                    <h1>Calendario <span>It just got more flexible</span></h1>
+                    <nav class="codrops-demos">
+                        <a href="index.html">Demo 1</a>
+                        <a href="index2.html">Demo 2</a>
+                        <a class="current-demo" href="index3.html">Demo 3</a>
+                    </nav>
+                </header>
+                <ul class="cbp_tmtimeline">
+                    <li class="all-day">
+                        <time class="cbp_tmtime" datetime="all-day"><span>all-day</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="00:00"><span>00:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="01:00"><span>01:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="02:00"><span>02:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="03:00"><span>03:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="04:00"><span>04:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="05:00"><span>05:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="06:00"><span>06:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="07:00"><span>07:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="08:00"><span>08:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="09:00"><span>09:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="10:00"><span>10:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="11:00"><span>11:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="12:00"><span>12:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="13:00"><span>13:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="14:00"><span>14:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="15:00"><span>15:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="16:00"><span>16:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="17:00"><span>17:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="18:00"><span>18:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="19:00"><span>19:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="20:00"><span>20:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="21:00"><span>21:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="22:00"><span>22:00</span></time>
+                    </li>
+                    <li>
+                        <time class="cbp_tmtime" datetime="23:00"><span>23:00</span></time>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script type="text/javascript" src="js/calendario.js"></script>
+        <script type="text/javascript" src="js/dataTimeline.js"></script>
+        <script>
+			$(document).ready(function(){
+				var once = false,
+					today = new Date(Date.now()),
+					zoneH = parseInt(today.getTimezoneOffset() / 60),
+					zoneM = parseInt(today.getTimezoneOffset() % 60),
+					zoneS = (zoneH < 0 ? '+' : '-') + (Math.abs(zoneH) < 10 ? '0' + Math.abs(zoneH) : Math.abs(zoneH)) + ':' +
+					(Math.abs(zoneM) < 10 ? '0' + Math.abs(zoneM) : Math.abs(zoneM));
+				
+				function updateMonthYear() {
+					$( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
+				}
+				
+				$(document).on('finish.calendar.calendario', function(e){
+					$( '#custom-month' ).html( $( '#calendar' ).calendario('getMonthName') );
+					$( '#custom-year' ).html( $( '#calendar' ).calendario('getYear'));
+					$( '#custom-next' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoNextMonth', updateMonthYear);
+					} );
+					$( '#custom-prev' ).on( 'click', function() {
+						$( '#calendar' ).calendario('gotoPreviousMonth', updateMonthYear);
+					} );
+					if(!once) {
+						init();
+						$( '#calendar' ).calendario('getCell', today.getDate()).trigger('click');
+						once = true;
+					}
+				});
+				
+				$('#calendar').on('shown.calendar.calendario', function(){
+					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
+						if( dateprop.data.content.length > 0 ) {
+							if(dateprop.data.startTime.length > 0) {
+								$('#view').trigger('calClick');
+								reset();
+								for(var i = 0; i < dateprop.data.startTime.length; i++) {
+									if(dateprop.data.allDay[i]) allDay(dateprop.data.content[i]);
+									else date(dateprop.data.content[i], dateprop.data.startTime[i], dateprop.data.endTime[i]);
+								}
+							}
+						}
+					});
+				});
+				
+				$('#view').on('click calClick', function(e){
+					e.preventDefault();
+					if(once) $('.custom-calendar-wrap').slideToggle();
+					else $('.custom-calendar-wrap').slideUp();
+				});
+				
+				function init() {
+					var d = new Date(), time, hour;
+					$('ul > li:not(.all-day)').each(function(i, e){
+						time = $(e).find('time').attr('datetime');
+						hour = parseInt(time.split(':')[0]);
+						d.setHours(hour, 0, 0, 0);
+						$(e).find('time').attr('datetime', d.toISOString());
+						if(hour < 10) $(e).find('time > span').html('0' + hour + ':' + '00<h6>AM</h6>');
+						else if(hour < 12 && hour >= 10) $(e).find('time > span').html(hour + ':' + '00<h6>AM</h6>');
+						else if(hour == 12) $(e).find('time > span').html(hour + ':' + '00<h6>PM</h6>');
+						else if(hour < 22 && hour > 12) $(e).find('time > span').html('0' + (hour - 12) + ':' + '00<h6>PM</h6>');
+						else if(hour >= 22) $(e).find('time > span').html((hour - 12) + ':' + '00<h6>PM</h6>');
+					});
+				}
 
-                $( '#custom-next' ).on( 'click', function() {
-                    cal.gotoNextMonth( updateMonthYear );
-                } );
-                $( '#custom-prev' ).on( 'click', function() {
-                    cal.gotoPreviousMonth( updateMonthYear );
-                } );
-
-                function updateMonthYear() {                
-                    $month.html( cal.getMonthName() );
-                    $year.html( cal.getYear() );
-                }
-
-                function logFeed( data ) {              
-                    console.log(data);
-                }
-            });
-        </script>
+				function allDay(content) {              
+					$('li.all-day').append('<div class="cbp_tmlabel">' + content + '</div>');
+				}
+				
+				function date(content, start, end) {                
+					var pos = start.getHours() + 2,
+						top = ((start.getMinutes() / 60) * 200) == 0 ? '-1px' :  ((start.getMinutes() / 60) * 200) - 1 + 'px',
+						height = ((((end.getTime() - start.getTime()) / (60 * 1000 * 60)) * 200) - 1) + 'px',
+						append = '<div class="cbp_tmlabel" style="top:'+ top + ';height:' + height + '; max-height:' + height + '">' +
+							content + '</div>';
+					$('ul > li:nth-child(' + pos +')').append(append);
+				}
+				
+				function reset() {              
+					$('li').find('div.cbp_tmlabel').remove();
+				}
+				
+				$('#calendar').calendario({
+					caldata : timelineEvents,
+					displayWeekAbbr : true,
+					zone: zoneS
+				});
+			});
+		</script>
     </body>
 </html>

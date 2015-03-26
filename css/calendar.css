@@ -96,7 +96,7 @@
 	text-align: right;
 }
 
-.fc-calendar .fc-row > div time {
+.fc-calendar .fc-row > div time, .fc-calendar .fc-row > div note {
 	display: none;
 }
 
