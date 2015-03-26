@@ -27,7 +27,7 @@ Summarized, use it freely, integrate it, make it your own, but don’t copy and 
 
 Notable Changes
 ===============
-* Calendario gets more flexible : [Boží Ďábel](https://github.com/deviprsd21) [Pull Request - #11](https://github.com/codrops/Calendario/pull/11)
-* Multiple Events : [Mattias Lyckne](https://github.com/olyckne) [Pull Request - #22](https://github.com/codrops/Calendario/pull/22)
-* Flexibility In-built : [Boží Ďábel](https://github.com/deviprsd21) [Pull Request - #23](https://github.com/codrops/Calendario/pull/23)
-* Now with Time : [Boží Ďábel](https://github.com/deviprsd21) [Pull Request - #25](https://github.com/codrops/Calendario/pull/25)
+* Calendario gets more flexible : [Boží Ďábel](https://github.com/deviprsd21) ([Pull Request - #11](https://github.com/codrops/Calendario/pull/11))
+* Multiple Events : [Mattias Lyckne](https://github.com/olyckne) ([Pull Request - #22](https://github.com/codrops/Calendario/pull/22))
+* Flexibility In-built : [Boží Ďábel](https://github.com/deviprsd21) ([Pull Request - #23](https://github.com/codrops/Calendario/pull/23))
+* Now with Time : [Boží Ďábel](https://github.com/deviprsd21) ([Pull Request - #25](https://github.com/codrops/Calendario/pull/25))
