@@ -31,18 +31,13 @@ webservers should be tuned. Here is list of mime types for our file extentions:
 - `image/svg+xml` - svg
 
 
-Comments on archive content
----------------------------
+Font license info
+-----------------
 
-- /font/* - fonts in different formats
+## Font Awesome
 
-- /css/*  - different kinds of css, for all situations. Should be ok with 
-  twitter bootstrap. Also, you can skip <i> style and assign icon classes
-  directly to text elements
+   Copyright (C) 2012 by Dave Gandy
 
-- demo.html - demo file, to show your webfont content
-
-- LICENSE.txt - license info about source fonts, used to build your one.
-
-- config.json - keeps your settings. You can import it back to fontello anytime,
-  to continue your work
+   Author:    Dave Gandy
+   License:   CC BY 3.0 (http://creativecommons.org/licenses/by/3.0/)
+   Homepage:  http://fortawesome.github.com/Font-Awesome/

@@ -44,7 +44,7 @@
     this.today     = new Date()
     this.month     = (isNaN(this.options.month) || this.options.month === null) ? this.today.getMonth() : this.options.month - 1
     this.year      = (isNaN(this.options.year) || this.options.year === null) ? this.today.getFullYear() : this.options.year
-    this.caldata   = this.pC(this.options.caldata)
+    this.caldata   = this.processCaldata(this.options.caldata)
     this.curData   = []
     this.syncData  = {}
     this.generateTemplate()
@@ -88,7 +88,7 @@
     return data[key].push(c) ? data : data
   }
 
-  Calendario.prototype.pC = function (obj) {
+  Calendario.prototype.processCaldata = function (obj) {
     var data = {}, self = this
     $.each(obj, function(key, val){
       $.each(val, function(i, c){
@@ -288,8 +288,8 @@
   }
 
   Calendario.prototype.setData = function(caldata, clear) {
-    if(clear) this.caldata = this.pC(caldata)
-    else $.extend(this.caldata, this.pC(caldata))
+    if(clear) this.caldata = this.processCaldata(caldata)
+    else $.extend(this.caldata, this.processCaldata(caldata))
     return this.generateTemplate()
   }
 
