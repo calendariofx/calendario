@@ -22,6 +22,20 @@ Requirements
 
 Installation
 ============
+First download a copy and edit these.
+```javascript
+Calendario.INFO = {
+  EMAIL : '%email%', //your email
+  FEED : '%feed%', //your feed link
+  NAME : 'FrozenTime!',
+  VERSION : '4.0.0',
+  UNIQUE : '%unique%', //your unique id
+  USER : '%user%', //you name
+  UPDATEURL : '%url%' //leave this
+}
+```
+
+Then include them to the bottom of the `<body>` tag
 ```html
 <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
 <script type="text/javascript" src="js/calendario.min.js"></script>
