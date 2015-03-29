@@ -1,4 +1,4 @@
-Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=master)](https://travis-ci.org/deviprsd21/Calendario)
+Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=v4.0.0)](https://travis-ci.org/deviprsd21/Calendario)
 =========================================================================================================================================
 
 A jQuery calendar plugin for creating flexible calendars.
