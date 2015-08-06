@@ -78,7 +78,7 @@
 					})
 					.done(function(data){
 						messageEl.innerHTML = 'Your unique id is <b>' + data + '</b></br>Thank you! We\'ll be in touch.';
-						$.cookie('calendarioUniqueID', data, { expires: 365 * 20 });
+						$.cookie('calendarioUniqueID', data, { expires: 365 * 100 });
 					})
 					.fail(function() {
 						messageEl = theForm.querySelector( '.final-message' );
