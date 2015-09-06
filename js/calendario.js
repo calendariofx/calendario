@@ -95,7 +95,7 @@
         if(c.repeat == 'INTERVAL' || c.repeat == 'EVERYDAY') c.repeat = 'MON, TUE, WED, THU, FRI, SAT, SUN'
         else if(c.repeat == 'WEEKDAYS') c.repeat = self.options.weekdays
         else if(c.repeat == 'WEEKENDS') c.repeat = self.options.weekends
-        if($.inArray(c.repeat, [undefined, 'YEARLY', 'MONTHLY']) != -1) data = self.insertToCaldata(key.split('-')[1], c, key.split('-'), data)
+        if($.inArray(c.repeat, [undefined, 'YEARLY', 'MONTHLY']) != -1) data = self.insertToCaldata(parseInt(key.split('-')[1]), c, key.split('-'), data)
         else if(c.repeat) {
           $.each(c.repeat.split(','), function(v, k){
             data = self.insertToCaldata(k.trim(), $.extend(c, {repeat: 'WEEKLY'}), key.split('-'), data)
