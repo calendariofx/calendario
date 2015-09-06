@@ -1,5 +1,5 @@
 /**
- * [jquery.calendario.js] (v4.0.0) #Copyright 2015, Boží Ďábel#
+ * [jquery.calendario.js] (v4.1.0) #Copyright 2015, Boží Ďábel#
  */
 
 +function ($) {
@@ -13,7 +13,7 @@
     EMAIL : '%email%',
 	FEED : '%feed%',
 	NAME : 'FrozenTime!',
-	VERSION : '4.0.0',
+	VERSION : '4.1.0',
 	UNIQUE : '%unique%',
 	USER : '%user%',
 	UPDATEURL : '%url%'
@@ -226,7 +226,7 @@
           
         if (day <= monthLength && (i > 0 || j >= p)) {
           inner = '<span class="fc-date">' + day + '</span><span class="fc-weekday">' + this.options.weekabbrs[idx] + '</span>'
-          data = Array.prototype.concat(this.caldata[day < 10 ? '0' + day : day], this.caldata[this.options.weekabbrs[idx].toUpperCase()])
+          data = Array.prototype.concat(this.caldata[day], this.caldata[this.options.weekabbrs[idx].toUpperCase()])
           .sort(function(a, b){
             return (a.allDay ? '00:00' : a.startTime).replace(':','') - (b.allDay ? '00:00' : b.startTime).replace(':','')
           })
