@@ -57,7 +57,7 @@
     return data
   }
 
-  Calendario.prototype.initEvents = function (self = this) {
+  Calendario.prototype.initEvents = function () {
     this.$element.on(this.options.events.join('.calendario ').trim() + '.calendario', 'div.fc-row > div:not(:empty)', function(e) {
       $(this).trigger($.Event('onDay' + e.type.charAt(0).toUpperCase() + e.type.slice(1)), [$(this).data('bz.calendario.dateprop')])
     })
