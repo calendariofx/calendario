@@ -8,7 +8,7 @@ var events = {
 	'03-02-2015' : [{content: 'Yeah Monthly', repeat: 'MONTHLY', allDay: true, endDate: '07-02-2015'}],
 	'01-07-2012' : [{content: 'Monthly And Yearly', repeat: 'MONTHLY', allDay: true, endDate: '02-07-2015'}],
 	'03-02-2015' : [{content : 'Graduation Exams', repeat: 'INTERVAL', allDay: true, endDate: '03-20-2015'}],
-	'04-01-2015' : [{content : 'MONDAY (WEEKLY)', repeat: 'MON', allDay: true, endDate: '04-30-2015', category: 'work'}]
+	'04-01-2015' : [{content : 'MONDAY (WEEKLY)', repeat: 'MON', allDay: true, endDate: '04-30-2015'}]
 },
 t = new Date(),
 //Creation of today event
