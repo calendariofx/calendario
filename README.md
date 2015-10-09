@@ -86,7 +86,7 @@ $('#calendar').calendario('version'); //returns
 ##### Calendario Events
 ```javascript
 //This event triggers only once when all the calendario have been intialized
-$(document).on('finish.calendar.calendario', function(e){ //something });
+$(document).on('finish.calendar.calendario', function(e){ /* something */ });
 $('#calendar').on('shown.calendar.calendario', function(){
 	//onDay events to be declared inside 'shown.calendar.calendario'
 	//If events : ['click', 'focus'] then only these two events will be
