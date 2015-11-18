@@ -49,7 +49,7 @@
             </section>
         </div><!-- /container -->
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script type="text/javascript" src="js/calendario.js"></script>
+        <script type="text/javascript" src="js/calendario.min.js"></script>
         <script type="text/javascript" src="js/data.js"></script>
         <script type="text/javascript"> 
             $(function() {
@@ -75,7 +75,7 @@
 				$('#calendar').on('shown.calendar.calendario', function(){
 					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
 						console.log(dateprop);
-						if(dateprop.data.content.length > 0 ) {
+						if(dateprop.data) {
 							showEvents(dateprop.data.html, dateprop);
 						}
 					});

@@ -64,16 +64,20 @@
   }
   
   Calendario.prototype.propDate = function () {
-    var self = this
+    var self = this, month, year, day, hc;
     this.$element.find('div.fc-row > div').filter(':not(:empty)').each(function() {
+      hc = $(this).children('span.fc-date').hasClass('fc-emptydate'), day = $(this).children('span.fc-date').text();
+	  month = (hc && day <= 31 && day >= 24 ? self.month - 1 : (hc && day >= 1 && day <= 7 ? self.month + 1 : self.month));
+      year = (month == 12 ? self.year + 1 : (month == -1 ? self.year - 1 : self.year));
+	  month = (month == 12 ? 0 : (month == -1 ? 11 : month));
       var dateProp = {
-        day : $(this).children('span.fc-date').text(),
-        month : self.month + 1,
-        monthname : self.options.displayMonthAbbr ? self.options.monthabbrs[self.month] : self.options.months[self.month],
-        year : self.year,
-        weekday : $(this).index() + self.options.startIn,
-        weekdayname : self.options.weeks[($(this).index() == 6 ? 0 : $(this).index() + self.options.startIn)],
-        data : self.curData[$(this).children('span.fc-date').text()] ? self.curData[$(this).children('span.fc-date').text()] : false
+        'day' : $(this).children('span.fc-date').text(),
+        'month' : month + 1,
+        'monthname' : self.options.displayMonthAbbr ? self.options.monthabbrs[month] : self.options.months[month],
+        'year' : year,
+        'weekday' : $(this).index() + self.options.startIn,
+        'weekdayname' : self.options.weeks[($(this).index() == 6 ? 0 : $(this).index() + self.options.startIn)],
+        'data' : self.curData[$(this).children('span.fc-date').text()] ? self.curData[$(this).children('span.fc-date').text()] : false
       }
       $(this).data('bz.calendario.dateprop', dateProp)
     })
