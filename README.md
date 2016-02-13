@@ -1,4 +1,4 @@
-Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=master)](https://travis-ci.org/deviprsd21/Calendario)
+Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=v4.0.0)](https://travis-ci.org/deviprsd21/Calendario)
 =========================================================================================================================================
 
 A jQuery calendar plugin for creating flexible calendars.
@@ -27,8 +27,8 @@ First download a copy and edit these.
 Calendario.INFO = {
   EMAIL : '%email%', //your email
   FEED : '%feed%', //your feed link
-  NAME : 'FrozenTime!',
-  VERSION : '4.0.0',
+  NAME : 'HangingTime!',
+  VERSION : '5.0.0',
   UNIQUE : '%unique%', //your unique id
   USER : '%user%', //you name
   UPDATEURL : '%url%' //leave this
@@ -59,6 +59,7 @@ $("#calendar").calendario({
     checkUpdate: true,
     weekdays: 'MON, TUE, WED, THU, FRI',
     weekends: 'SAT, SUN',
+	format: 'MM-DD-YYYY',
     feed: 'http://calendario.t15.org/sync/'
 });
 ```
@@ -86,7 +87,7 @@ $('#calendar').calendario('version'); //returns
 ##### Calendario Events
 ```javascript
 //This event triggers only once when all the calendario have been intialized
-$(document).on('finish.calendar.calendario', function(e){ //something });
+$(document).on('finish.calendar.calendario', function(e){ /* something */ });
 $('#calendar').on('shown.calendar.calendario', function(){
 	//onDay events to be declared inside 'shown.calendar.calendario'
 	//If events : ['click', 'focus'] then only these two events will be

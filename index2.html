@@ -75,7 +75,7 @@
 				$('#calendar').on('shown.calendar.calendario', function(){
 					$('div.fc-row > div').on('onDayClick.calendario', function(e, dateprop) {
 						console.log(dateprop);
-						if(dateprop.data.content.length > 0 ) {
+						if(dateprop.data) {
 							showEvents(dateprop.data.html, dateprop);
 						}
 					});
