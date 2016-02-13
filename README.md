@@ -27,8 +27,8 @@ First download a copy and edit these.
 Calendario.INFO = {
   EMAIL : '%email%', //your email
   FEED : '%feed%', //your feed link
-  NAME : 'FrozenTime!',
-  VERSION : '4.0.0',
+  NAME : 'HangingTime!',
+  VERSION : '5.0.0',
   UNIQUE : '%unique%', //your unique id
   USER : '%user%', //you name
   UPDATEURL : '%url%' //leave this
@@ -59,6 +59,7 @@ $("#calendar").calendario({
     checkUpdate: true,
     weekdays: 'MON, TUE, WED, THU, FRI',
     weekends: 'SAT, SUN',
+	format: 'MM-DD-YYYY',
     feed: 'http://calendario.t15.org/sync/'
 });
 ```
