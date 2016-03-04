@@ -1,5 +1,6 @@
 Calendario  [![Build Status](https://travis-ci.org/deviprsd21/Calendario.svg?branch=v4.0.0)](https://travis-ci.org/deviprsd21/Calendario)
 =========================================================================================================================================
+**NOTE:** v5.0.0 has been found to be buggy as reported in [#13](https://github.com/deviprsd21/Calendario/issues/13). Please downgrade to v4.1.0 till v5.0.1 is out!
 
 A jQuery calendar plugin for creating flexible calendars.
 
