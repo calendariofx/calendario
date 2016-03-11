@@ -1,5 +1,5 @@
 /**
- * [jquery.calendario.js] (v5.0.0) #Copyright 2015, Boží Ďábel#
+ * [jquery.calendario.js] (v5.0.1) ~~[Copyright 2015, Boží Ďábel]~~
  */
 
 +function ($) {
@@ -13,7 +13,7 @@
     EMAIL : '%email%',
 	FEED : '%feed%',
 	NAME : 'HangingTime!',
-	VERSION : '5.0.0',
+	VERSION : '5.0.1',
 	UNIQUE : '%unique%',
 	USER : '%user%',
 	UPDATEURL : '%url%'
@@ -65,12 +65,30 @@
   }
   
   Calendario.prototype.propDate = function () {
-    var self = this, month, year, day, hc
+    var self = this, month, year, day, hc, tdata, data
     this.$element.find('div.fc-row > div').filter(':not(:empty)').each(function() {
       hc = $(this).children('span.fc-date').hasClass('fc-emptydate'), day = $(this).children('span.fc-date').text()
       month = (hc && day <= 31 && day >= 24 ? self.month - 1 : (hc && day >= 1 && day <= 7 ? self.month + 1 : self.month))
       year = (month == 12 ? self.year + 1 : (month == -1 ? self.year - 1 : self.year))
       month = (month == 12 ? 0 : (month == -1 ? 11 : month))
+	  tdata = self.curData[day] ? self.curData[day] : false
+	  if(tdata) {
+        data = {html: [], allDay: [], startTime: [], endTime: [], note: [], content: [], url: []}
+        $.each(tdata.startTime, function(i, v){
+			if(v.getDate() == day && v.getMonth() == month && v.getFullYear() == year) {
+				data.startTime.push(v)
+				data.endTime.push(tdata.endTime[i])
+				data.allDay.push(tdata.allDay[i])
+				data.html.push(tdata.html[i])
+				data.note.push(tdata.note[i])
+				data.content.push(tdata.content[i])
+				data.url.push(tdata.url[i])
+			}
+		});
+		if(data.html.length == 0) data = false
+	  } else {
+		  data = false
+	  }
       var dateProp = {
         'day' : $(this).children('span.fc-date').text(),
         'month' : month + 1,
@@ -78,7 +96,7 @@
         'year' : year,
         'weekday' : $(this).index() + self.options.startIn,
         'weekdayname' : self.options.weeks[($(this).index() == 6 ? 0 : $(this).index() + self.options.startIn)],
-        'data' : self.curData[$(this).children('span.fc-date').text()] ? self.curData[$(this).children('span.fc-date').text()] : false
+        'data' : data
       }
       $(this).data('bz.calendario.dateprop', dateProp)
     })
