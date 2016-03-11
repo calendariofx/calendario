@@ -6,7 +6,7 @@
   },
   "description": "Flexible Calendar with jQuery and CSS3",
   "author": "https://twitter.com/deviprsd21",
-  "version": "4.0.0",
+  "version": "5.0.1",
   "devDependencies": {
     "jshint": "^2.6.0"
   }
