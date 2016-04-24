@@ -102,7 +102,7 @@ $('#calendar').on('shown.calendar.calendario', function(){
 
 Other Platforms
 ===============
-Yeah! I'm excited to anounce that Calendario is extending is roots to other web platforms. Special thanks to [Ray Flores](https://github.com/rayflores) for creating the Word Press plugin. Enjoy the flexibilty of Calendario in your wordpress application. 
+Yeah! I'm excited to anounce that Calendario is extending is roots to other web platforms. Special thanks to [Ray Flores](https://github.com/rayflores) for creating the Word Press plugin. Enjoy the flexibilty of Calendario in your wordpress application. Click on the choice of your platform and you will be redirected.
 
 [![wpandcalendariosmall](https://cloud.githubusercontent.com/assets/3809354/14767196/92b67166-0a3d-11e6-816d-5f58baff0bb9.jpg)](https://github.com/rayflores/wp-calendario)
 
