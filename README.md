@@ -100,6 +100,10 @@ $('#calendar').on('shown.calendar.calendario', function(){
 });
 ```
 
+Other Platforms
+===============
+Yeah! I'm excited to anounce that Calendario is extending is roots to other web platforms. Special thanks to @rayflores for creating the Word Press plugin. Enjoy the flexibilty of Calendario in your wordpress application. 
+
 Licensing & Terms of Use
 ========================
 The resources on Codrops can be **used freely in personal and commercial projects.** Please note, that most of the tutorials and resources are experimental and not ready for production, but made for inspiration and demonstration purpose only.
