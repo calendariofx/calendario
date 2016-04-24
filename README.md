@@ -107,8 +107,8 @@ Yeah! I'm excited to anounce that Calendario is extending is roots to other web 
 [![wpandcalendariosmall](https://cloud.githubusercontent.com/assets/3809354/14767196/92b67166-0a3d-11e6-816d-5f58baff0bb9.jpg)](https://github.com/rayflores/wp-calendario)
 
 Where is Calendario being used?
-==============================
-
+===============================
+[![new forest](https://cloud.githubusercontent.com/assets/3809354/14767314/f62a1dc2-0a3f-11e6-8755-5e26e2674f43.jpg)](http://www.newforestwaterpark.co.uk/opening-times/wake-park-opening-times/)
 
 Licensing & Terms of Use
 ========================
