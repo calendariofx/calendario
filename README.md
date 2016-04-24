@@ -106,6 +106,10 @@ Yeah! I'm excited to anounce that Calendario is extending is roots to other web 
 
 [![wpandcalendariosmall](https://cloud.githubusercontent.com/assets/3809354/14767196/92b67166-0a3d-11e6-816d-5f58baff0bb9.jpg)](https://github.com/rayflores/wp-calendario)
 
+Where is Calendario being used?
+==============================
+
+
 Licensing & Terms of Use
 ========================
 The resources on Codrops can be **used freely in personal and commercial projects.** Please note, that most of the tutorials and resources are experimental and not ready for production, but made for inspiration and demonstration purpose only.
