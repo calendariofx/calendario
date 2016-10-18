@@ -11,12 +11,12 @@
 
   Calendario.INFO = {
     EMAIL : '%email%',
-  FEED : '%feed%',
-  NAME : 'HangingTime!',
-  VERSION : '5.0.1',
-  UNIQUE : '%unique%',
-  USER : '%user%',
-  UPDATEURL : '%url%'
+    FEED : '%feed%',
+    NAME : 'HangingTime!',
+    VERSION : '5.0.1',
+    UNIQUE : '%unique%',
+    USER : '%user%',
+    UPDATEURL : '%url%'
   }
 
   Calendario.DEFAULTS = {
@@ -29,7 +29,7 @@
     startIn : 1,
     fillEmpty: true,
     zone: '00:00',
-  events : ['click', 'focus'],
+    events : ['click', 'focus'],
     checkUpdate: true,
     weekdays: 'MON, TUE, WED, THU, FRI',
     weekends: 'SAT, SUN',
@@ -71,24 +71,24 @@
       month = (hc && day <= 31 && day >= 24 ? self.month - 1 : (hc && day >= 1 && day <= 7 ? self.month + 1 : self.month))
       year = (month == 12 ? self.year + 1 : (month == -1 ? self.year - 1 : self.year))
       month = (month == 12 ? 0 : (month == -1 ? 11 : month))
-    tdata = self.curData[day] ? self.curData[day] : false
-    if(tdata) {
+      tdata = self.curData[day] ? self.curData[day] : false
+      if(tdata) {
         data = {html: [], allDay: [], startTime: [], endTime: [], note: [], content: [], url: []}
         $.each(tdata.startTime, function(i, v){
-      if(v.getDate() == day && v.getMonth() == month && v.getFullYear() == year) {
-        data.startTime.push(v)
-        data.endTime.push(tdata.endTime[i])
-        data.allDay.push(tdata.allDay[i])
-        data.html.push(tdata.html[i])
-        data.note.push(tdata.note[i])
-        data.content.push(tdata.content[i])
-        data.url.push(tdata.url[i])
+          if(v.getDate() == day && v.getMonth() == month && v.getFullYear() == year) {
+            data.startTime.push(v)
+            data.endTime.push(tdata.endTime[i])
+            data.allDay.push(tdata.allDay[i])
+            data.html.push(tdata.html[i])
+            data.note.push(tdata.note[i])
+            data.content.push(tdata.content[i])
+            data.url.push(tdata.url[i])
+          }
+        });
+        if(data.html.length == 0) data = false
+      } else {
+        data = false
       }
-    });
-    if(data.html.length == 0) data = false
-    } else {
-      data = false
-    }
       var dateProp = {
         'day' : $(this).children('span.fc-date').text(),
         'month' : month + 1,
@@ -113,10 +113,10 @@
 
   Calendario.prototype.processCaldata = function (obj) {
     var data = {}, self = this
-  var format = {}
-  $.each(this.options.format.toUpperCase().split('-'), function(key, val) {
-    format[val] = key
-  })
+    var format = {}
+    $.each(this.options.format.toUpperCase().split('-'), function(key, val) {
+      format[val] = key
+    })
     $.each(obj, function(key, val){
       $.each(val, function(i, c){
         if(c.repeat == 'INTERVAL' || c.repeat == 'EVERYDAY') c.repeat = 'MON, TUE, WED, THU, FRI, SAT, SUN'
@@ -225,9 +225,9 @@
     var pMonthLength = new Date(this.year, this.month, 0).getDate()
     var html         = '<div class="fc-body"><div class="fc-row">'
     var day          = 1
-  var month        = 1
-  var year         = 1
-  var empDay       = 1
+    var month        = 1
+    var year         = 1
+    var empDay       = 1
     var startingDay  = firstDay.getDay()
     var pos          = 0
     var p            = 0
@@ -239,7 +239,7 @@
     var content      = ''
     var idx          = 0
     var data         = ''
-  var dbobj        = {}
+    var dbobj        = {}
     var cellClasses  = ''
 
     for (var i = 0; i < 7; i++) {
@@ -259,26 +259,26 @@
         if(this.options.fillEmpty && (j < p || i > 0)) {
           if(day > monthLength) {
             empDay = day++ - monthLength
-      year = (this.month + 1) == 12 ? this.year + 1 : this.year
+            year = (this.month + 1) == 12 ? this.year + 1 : this.year
             month = (this.month + 1) == 12 ? 0 : this.month + 1
           } else if (day == 1) {
             empDay = pMonthLength++ - p + 1
-      year = (this.month - 1) == -1 ? this.year - 1 : this.year
-      month = (this.month - 1) == -1 ? 11 : this.month - 1
+            year = (this.month - 1) == -1 ? this.year - 1 : this.year
+            month = (this.month - 1) == -1 ? 11 : this.month - 1
           }
           if(day > monthLength || day == 1) {
-        today = month === this.today.getMonth() && year === this.today.getFullYear() && empDay === this.today.getDate()
+            today = month === this.today.getMonth() && year === this.today.getFullYear() && empDay === this.today.getDate()
             past = year < this.today.getFullYear() || month < this.today.getMonth() && year === this.today.getFullYear() ||
                    month === this.today.getMonth() && year === this.today.getFullYear() && empDay < this.today.getDate()
             dbobj = {'month': month, 'year': year}
-      inner = '<span class="fc-date fc-emptydate">' + empDay + '</span><span class="fc-weekday">' + this.options.weekabbrs[idx] + '</span>'
-        data = Array.prototype.concat(this.caldata[empDay], this.caldata[this.options.weekabbrs[idx].toUpperCase()])
+            inner = '<span class="fc-date fc-emptydate">' + empDay + '</span><span class="fc-weekday">' + this.options.weekabbrs[idx] + '</span>'
+            data = Array.prototype.concat(this.caldata[empDay], this.caldata[this.options.weekabbrs[idx].toUpperCase()])
             .sort(function(a, b){
               return (a.allDay ? '00:00' : a.startTime).replace(':','') - (b.allDay ? '00:00' : b.startTime).replace(':','')
             })
-        if(data) content += this.parseDataToDay(data, empDay, dbobj)
-            if(content !== '') inner += '<div class="fc-calendar-events">' + content + '</div>'
-      }
+            if(data) content += this.parseDataToDay(data, empDay, dbobj)
+                if(content !== '') inner += '<div class="fc-calendar-events">' + content + '</div>'
+          }
         }
 
         if (day <= monthLength && (i > 0 || j >= p)) {
