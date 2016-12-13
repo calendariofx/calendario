@@ -142,7 +142,7 @@
   }
 
   Calendario.prototype.parseDay = function(c, day) {
-    if(!this.curData[day]) this.curData[day] = {html: [], allDay: [], startTime: [], endTime: [], note: [], content: [], url: []}
+    if(!this.curData[day]) this.curData[day] = {html: [], allDay: [], startTime: [], endTime: [], note: [], content: [], url: [], rawDate: []}
     c.allDay  ? this.curData[day].allDay.push(true) : this.curData[day].allDay.push(false)
     c.allDay  ? this.curData[day].startTime.push(this.toDObj('00:00', day)) : this.curData[day].startTime.push(this.toDObj(c.startTime, day))
     c.allDay  ? this.curData[day].endTime.push(this.toDObj('23:59', day)) : this.curData[day].endTime.push(this.toDObj(c.endTime, day))
@@ -155,6 +155,7 @@
     this.curData[day].html[i] += '<time class="fc-starttime" datetime="' + this.curData[day].startTime[i].toISOString() + '"></time>'
     this.curData[day].html[i] += '<time class="fc-endtime" datetime="' + this.curData[day].endTime[i].toISOString() + '"></time>'
     this.curData[day].html[i] += '<note>' + this.curData[day].note[i] + '</note>'
+    this.curData[day].rawDate.push(new Date(c.year[0], c.month[0] - 1))
     this.isProperlyParsed = true
   }
 
@@ -188,14 +189,10 @@
     })
     if(this.curData[day] && self.isProperlyParsed) {
       var html = []
-      if(dbobj.year) {
-        this.curData[day].startTime.filter(function(v, i) {
-          if(dbobj.month == v.getMonth()) html.push(this.curData[day].html[i])
-          return true
-        }, this)
-      } else {
-        html = this.curData[day].html
-      }
+      this.curData[day].rawDate.filter(function(v, i) {
+        if(self.month == v.getMonth()) html.push(this.curData[day].html[i])
+        return true
+      }, this)
       return '<div class="fc-calendar-event">' + html.join('</div><div class="fc-calendar-event">') + '</div>'
     }
     else return ''
