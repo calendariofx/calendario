@@ -1,5 +1,5 @@
 /**
- * [jquery.calendario.js] (v5.0.1) ~~[Copyright 2015, Boží Ďábel]~~
+ * [jquery.calendario.js] (v5.0.2) ~~[Copyright 2017, Boží Ďábel]~~
  */
 
 +function ($) {
@@ -13,7 +13,7 @@
     EMAIL : '%email%',
     FEED : '%feed%',
     NAME : 'HangingTime!',
-    VERSION : '5.0.1',
+    VERSION : '5.0.2',
     UNIQUE : '%unique%',
     USER : '%user%',
     UPDATEURL : '%url%'
@@ -147,20 +147,20 @@
     c.allDay  ? this.curData[day].startTime.push(this.toDObj('00:00', day)) : this.curData[day].startTime.push(this.toDObj(c.startTime, day))
     c.allDay  ? this.curData[day].endTime.push(this.toDObj('23:59', day)) : this.curData[day].endTime.push(this.toDObj(c.endTime, day))
     c.note    ? this.curData[day].note.push(c.note) : this.curData[day].note.push('')
-  c.content ? this.curData[day].content.push(c.content) : this.curData[day].content.push('')
-  c.url     ? this.curData[day].url.push(c.url) : this.curData[day].url.push('')
+    c.content ? this.curData[day].content.push(c.content) : this.curData[day].content.push('')
+    c.url     ? this.curData[day].url.push(c.url) : this.curData[day].url.push('')
     var i = c.url ? this.curData[day].html.push('<a class="' + c.category + '" href="' + c.url + '">' + c.content +'</a>') - 1
                   : this.curData[day].html.push('<span class="' + c.category + '">' + c.content + '</span>') - 1
     this.curData[day].html[i] += '<time class="fc-allday" datetime="' + this.curData[day].allDay[i] + '"></time>'
     this.curData[day].html[i] += '<time class="fc-starttime" datetime="' + this.curData[day].startTime[i].toISOString() + '"></time>'
     this.curData[day].html[i] += '<time class="fc-endtime" datetime="' + this.curData[day].endTime[i].toISOString() + '"></time>'
     this.curData[day].html[i] += '<note>' + this.curData[day].note[i] + '</note>'
-  this.isProperlyParsed = true
+    this.isProperlyParsed = true
   }
 
   Calendario.prototype.parseDataToDay = function(data, day, dbobj) {
     var self = $.extend({}, this, dbobj)
-  self.isProperlyParsed = false
+    self.isProperlyParsed = false
     $.each(data, function(i, c) {
       if(!c) {/*ignore*/}
       else if(c.repeat == 'YEARLY' || c.repeat == 'MONTHLY' || c.repeat == 'WEEKLY') {
@@ -186,7 +186,18 @@
         }
       } else if(self.year == c.year[0] && (self.month + 1) == c.month[0]) self.parseDay(c, day)
     })
-    if(this.curData[day] && self.isProperlyParsed) return '<div class="fc-calendar-event">' + this.curData[day].html.join('</div><div class="fc-calendar-event">') + '</div>'
+    if(this.curData[day] && self.isProperlyParsed) {
+      var html = []
+      if(dbobj.year) {
+        this.curData[day].startTime.filter(function(v, i) {
+          if(dbobj.month == v.getMonth()) html.push(this.curData[day].html[i])
+          return true
+        }, this)
+      } else {
+        html = this.curData[day].html
+      }
+      return '<div class="fc-calendar-event">' + html.join('</div><div class="fc-calendar-event">') + '</div>'
+    }
     else return ''
   }
 
