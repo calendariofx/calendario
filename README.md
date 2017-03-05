@@ -6,7 +6,7 @@ A jQuery calendar plugin for creating flexible calendars.
 
 [Article](http://tympanus.net/codrops/?p=12416)
 
-[Demo](http://deviprsd21.github.io/Calendario/)
+[Demo](http://calendariofx.github.io/Calendario/)
 
 Notable Changes
 ===============
