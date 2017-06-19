@@ -50,17 +50,17 @@ How to Use
 ```javascript
 $("#calendar").calendario({
     month: 02,
-	year: 2012,
+    year: 2012,
     displayWeekAbbr : false,
     displayMonthAbbr : false,
     startIn : 1,
     fillEmpty: true,
     zone: '00:00',
-	events : ['click', 'focus'],
+    events : ['click', 'focus'],
     checkUpdate: true,
     weekdays: 'MON, TUE, WED, THU, FRI',
     weekends: 'SAT, SUN',
-	format: 'MM-DD-YYYY',
+    format: 'MM-DD-YYYY',
     feed: 'http://calendario.t15.org/sync/'
 });
 ```
