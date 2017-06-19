@@ -54,7 +54,7 @@ $("#calendar").calendario({
     displayWeekAbbr : false,
     displayMonthAbbr : false,
     startIn : 1,
-    fillEmpty: true,
+    fillEmpty: true, //Show Previous and next dates in the empty cells of the calendar
     zone: '00:00',
     events : ['click', 'focus'],
     checkUpdate: true,
