@@ -95,7 +95,7 @@
         'monthname' : self.options.displayMonthAbbr ? self.options.monthabbrs[month] : self.options.months[month],
         'year' : year,
         'weekday' : $(this).index() + self.options.startIn,
-        'weekdayname' : self.options.weeks[($(this).index() == 6 ? 0 : $(this).index() + self.options.startIn)],
+        'weekdayname' : self.options.weeks[($(this).index() + self.options.startIn) % 7],
         'data' : data
       }
       $(this).data('bz.calendario.dateprop', dateProp)
