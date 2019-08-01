@@ -1,13 +1,26 @@
 {
-  "name": "Calendario",
+  "name": "calendariofx-calendario",
+  "version": "7.0.0-alpha.1",
+  "description": "A calendar for creating flexible calendars.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/deviprsd21/Calendario.git"
+    "url": "git+https://github.com/CalendarioFX/Calendario.git"
   },
-  "description": "Flexible Calendar with jQuery and CSS3",
-  "author": "https://twitter.com/deviprsd21",
-  "version": "5.0.1",
-  "devDependencies": {
-    "jshint": "^2.6.0"
-  }
+  "keywords": [
+    "Calendar",
+    "Calendar Js",
+    "Calendario",
+    "Events",
+    "Flexible Calendar"
+  ],
+  "author": "Devi Prasad <deviprsd21@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/CalendarioFX/Calendario/issues"
+  },
+  "homepage": "https://github.com/CalendarioFX/Calendario#readme"
 }
