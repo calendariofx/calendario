@@ -4,6 +4,32 @@
         "declaration": true,
         "declarationDir": "@types",
         "target": "es5",
+        "module": "es6",
         "downlevelIteration": true
+    },
+    
+    "typedocOptions": {
+        "mode": "modules",
+        "out": "public/docs",
+        "name": "Calendario",
+        "exclude": [
+            "node_modules",
+            "test",
+            "docs"
+        ],
+        "theme": "default",
+        "ignoreCompilerErrors": true,
+        "excludePrivate": true,
+        "excludeProtected": true,
+        "excludeNotExported": "true",
+        "target": "ES6",
+        "moduleResolution": "node",
+        "preserveConstEnums": "true",
+        "stripInternal": "true",
+        "suppressExcessPropertyErrors": "true",
+        "suppressImplicitAnyIndexErrors": "true",
+        "module": "commonjs",
+        "excludeExternals": true,
+        "includeDeclarations": false
     }
 }

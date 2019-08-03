@@ -1,6 +1,7 @@
 import typescript from 'rollup-plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import replace from 'rollup-plugin-replace'
+import copy from 'rollup-plugin-copy'
 import pkg from './package.json'
 
 export default [
@@ -21,6 +22,12 @@ export default [
             replace({
                 __NAME__: pkg['version-name'],
                 __VERSION__: pkg['version']
+            }),
+            copy({
+                targets: [
+                    { dest: 'public', src: 'LICENSE' },
+                    { dest: 'public', src: 'README.md' }
+                ]
             })
         ]
     },

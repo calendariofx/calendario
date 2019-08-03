@@ -2,7 +2,7 @@ import { DateTime, StringUnitLength, NumberingSystem } from 'luxon'
 import { ProcessedCalendarioEvents, CalendarioEvents, processEvents, ProcessedCalendarioEvent } from '../lib/events'
 import { CalendarioOptions } from '../lib/options'
 import { Today } from './today'
-import calendario from '..'
+import calendario from '../index'
 
 export class Calendario extends Today {
     private events: ProcessedCalendarioEvents
@@ -78,5 +78,28 @@ export class Calendario extends Today {
         return calendario(this._events, options, this.today.toJSDate())
     }
 
+    public toDate(date: Date): Calendario {
+        return calendario(this._events, this.options, date)
+    }
+
+    public nextMonth(): Calendario {
+        return this.toDate(this.today.plus({months: 1}).toJSDate())
+    }
+
+    public previousMonth(): Calendario {
+        return this.toDate(this.today.minus({months: 1}).toJSDate())
+    }
+
+    public nextYear(): Calendario {
+        return this.toDate(this.today.plus({years: 1}).toJSDate())
+    }
+
+    public previousYear(): Calendario {
+        return this.toDate(this.today.minus({years: 1}).toJSDate())
+    }
+
+    public now(): Calendario {
+        return this.toDate(DateTime.local().toJSDate())
+    }
 
 }
