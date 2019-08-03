@@ -89,3 +89,4 @@ typings/
 
 /index.*
 .vscode
+*.txt

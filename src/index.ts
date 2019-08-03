@@ -1,10 +1,10 @@
 import { CalendarioOptions, DEFAULTS } from './lib/options'
 import { TimeZoneError } from './lib/errors'
-import { CalendarioEvents, processEvents, ProcessedCalendarioEvents } from './lib/events'
+import { CalendarioEvents } from './lib/events'
 import { Settings, Info, Zone, DateTime } from 'luxon'
 import { Calendario } from './runtime/calendario'
 
-export default function calendario (events?: CalendarioEvents, options: CalendarioOptions = {}, today?: Date): Calendario {
+export default function calendario (events: CalendarioEvents = {}, options: CalendarioOptions = {}, today?: Date): Calendario {
     let zone: Zone
 
     Settings.throwOnInvalid = true
@@ -22,9 +22,8 @@ export default function calendario (events?: CalendarioEvents, options: Calendar
     Settings.defaultOutputCalendar = 'gregory'
 
     const _today: DateTime = (today ? DateTime.fromJSDate(today) : DateTime.local()).setLocale(options.parserLocale)
-    const _events: ProcessedCalendarioEvents = events ? processEvents({...events}, options) : {}
 
-    return new Calendario(_today, _events, options)
+    return new Calendario(_today, events, options)
 }
 
 export { INFO } from './lib/options'

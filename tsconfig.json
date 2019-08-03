@@ -3,6 +3,7 @@
         "lib": ["es6", "es5", "dom"],
         "declaration": true,
         "declarationDir": "@types",
-        "target": "es5"
+        "target": "es5",
+        "downlevelIteration": true
     }
 }

@@ -1,6 +1,6 @@
 {
   "name": "calendariofx-calendario",
-  "version": "7.0.0-alpha.1",
+  "version": "7.0.0-alpha.3",
   "version-name": "Enigma",
   "description": "A calendar for creating flexible calendars.",
   "main": "index.js",

@@ -1,5 +1,6 @@
 import { CalendarioOptions } from './options'
 import { Info, DateTime } from 'luxon'
+import { RepeatGenerator, repeaters } from '../utils/generators'
 
 export interface CalendarioEvent {
     allDay?: boolean;
@@ -14,9 +15,8 @@ export interface CalendarioEvent {
 }
 
 export interface ProcessedCalendarioEvent extends CalendarioEvent {
-    day: [number, number];
-    month: [number, number];
-    year: [number, number];
+    dates: [DateTime, DateTime];
+    generator: RepeatGenerator;
 }
 
 export interface CalendarioEvents {
@@ -32,28 +32,28 @@ function processEvent (
     dwd: string | number, event: CalendarioEvent, date: 
     DateTime, data: ProcessedCalendarioEvents, options: CalendarioOptions
 ): ProcessedCalendarioEvents {
-    if (!data[dwd]) data[dwd] = []
-
-    if (event.repeat) {
-        const _edt = DateTime.fromFormat(event.endDate, options.format, {locale: options.parserLocale})
-        data[dwd].push({
-            ...event,
-            ...{
-                day: [date.day, _edt.day],
-                month: [date.month, _edt.month],
-                year: [date.year, _edt.year]
-            }
-        })
-    } else {
-        data[dwd].push({
-            ...event,
-            ...{
-                day: [date.day, date.day],
-                month: [date.month, date.month],
-                year: [date.year, date.year]
-            }
-        })
+    if (!data[dwd]) {
+        data[dwd] = []
     }
+
+    let repeater: string
+
+    const _edt = event.repeat ? 
+        (event.endDate ? DateTime.fromFormat(event.endDate, options.format, {locale: options.parserLocale}) 
+            : date.plus({ years: 100 }) ) : date
+
+    if (!event.repeat) repeater = 'SINGLE'
+    else if (event.repeat === 'YEARLY' || event.repeat === 'MONTHLY') repeater = event.repeat
+    else if (event.repeat.split(/[,\s]+/).length < 7) repeater = 'WEEKLY'
+    else if (event.repeat.split(/[,\s]+/).length === 7) repeater = 'INTERVAL'
+
+    data[dwd].push({
+        ...event,
+        ...{
+            dates: [date.startOf('day'), _edt.startOf('day')],
+            generator: repeaters[repeater]
+        }
+    })
 
     return data
 }

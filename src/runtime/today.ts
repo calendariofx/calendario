@@ -9,7 +9,7 @@ export class Today extends Options {
 
     public constructor(today: DateTime, options: CalendarioOptions) {
         super(options)
-        this.today = today
+        this.today = today.startOf('month').startOf('day')
         this.weekdays = Info.weekdaysFormat(options.weekNameLength)
         this.months = Info.monthsFormat(options.monthNameLength)
     }
