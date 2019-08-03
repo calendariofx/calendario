@@ -35,7 +35,7 @@ function processEvent (
     if (!data[dwd]) data[dwd] = []
 
     if (event.repeat) {
-        const _edt = DateTime.fromFormat(event.endDate, options.format, {locale: options.parseLocale})
+        const _edt = DateTime.fromFormat(event.endDate, options.format, {locale: options.parserLocale})
         data[dwd].push({
             ...event,
             ...{
@@ -62,14 +62,14 @@ export function processEvents (events: CalendarioEvents, options: CalendarioOpti
     let _pce: ProcessedCalendarioEvents = {}, _dt: DateTime
 
     for (const [date, _events] of Object.entries(events)) {
-        _dt = DateTime.fromFormat(date, options.format, { locale: options.parseLocale })
+        _dt = DateTime.fromFormat(date, options.format, { locale: options.parserLocale })
         for (let event of _events) {
             if (event.repeat) {
                 event.repeat = event.repeat.toUpperCase()
             }
 
             if (event.repeat === 'INTERVAL') {
-                event = { ...event, ...{ repeat: Info.weekdaysFormat('short', {locale: options.parseLocale}).join(',') }}
+                event = { ...event, ...{ repeat: Info.weekdaysFormat('short', {locale: options.parserLocale}).join(',') }}
             } 
 
             if ([undefined, null, 'YEARLY', 'MONTHLY'].includes(event.repeat)) {

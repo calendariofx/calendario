@@ -21,7 +21,7 @@ export default function calendario (events?: CalendarioEvents, options: Calendar
     Settings.defaultNumberingSystem = resolvedOpts.numberingSystem
     Settings.defaultOutputCalendar = 'gregory'
 
-    const _today: DateTime = today ? DateTime.fromJSDate(today) : DateTime.local()
+    const _today: DateTime = (today ? DateTime.fromJSDate(today) : DateTime.local()).setLocale(options.parserLocale)
     const _events: ProcessedCalendarioEvents = events ? processEvents({...events}, options) : {}
 
     return new Calendario(_today, _events, options)

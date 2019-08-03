@@ -1,27 +1,27 @@
-import { NumberingSystem } from 'luxon';
+import { NumberingSystem, StringUnitLength } from 'luxon'
 
 export interface CalendarioOptions {
-    readonly displayWeekAbbr?: boolean | string;
-    readonly displayMonthAbbr?: boolean | string;
+    readonly weekNameLength?: StringUnitLength;
+    readonly monthNameLength?: StringUnitLength;
     readonly fillEmpty?: boolean;
     readonly format?: string;
     readonly locale?: string;
     readonly numberingSystem?: NumberingSystem;
-    readonly parseLocale?: string;
+    readonly parserLocale?: string;
     readonly startIn?: number;
     readonly timeZone?: string;
 }
 
 export const DEFAULTS: CalendarioOptions = {
-    displayMonthAbbr: false,
-    displayWeekAbbr: false,
     fillEmpty: true,
     format: 'MM-dd-yyyy',
     locale: '',
+    monthNameLength: 'long',
     numberingSystem: 'latn',
-    parseLocale: 'en-US',
-    startIn : 1,
-    timeZone: 'local'
+    parserLocale: 'en-US',
+    startIn : 0,
+    timeZone: 'local',
+    weekNameLength: 'long'
 }
 
 export interface CalendarioInformation {

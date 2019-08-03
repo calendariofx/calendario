@@ -1,15 +1,23 @@
 import { DateTime } from 'luxon'
 import { ProcessedCalendarioEvents } from '../lib/events'
 import { CalendarioOptions } from '../lib/options'
+import { Today } from './today'
 
-export class Calendario {
-    private today: DateTime
+export class Calendario extends Today {
     private events: ProcessedCalendarioEvents
-    private options: CalendarioOptions
 
     public constructor(today: DateTime, events: ProcessedCalendarioEvents, options: CalendarioOptions) {
-        this.today = today
+        super(today, options)
         this.events = events
-        this.options = options
+    }
+
+    public get head(): string[] {
+        const weekdays: string[] = []
+
+        for(let i = 0; i < this.weekdays.length; i++) {
+            weekdays.push(this.weekdays[(i + this.options.startIn) % this.weekdays.length])
+        }
+
+        return weekdays
     }
 }
