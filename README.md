@@ -27,3 +27,7 @@ const calendario = require('calendariofx-calendario') // CJS
 
 import calendario from 'calendariofx-calendario' // ESM
 ```
+
+# Documentaion / Test
+
+The detailed documentations and tests are being written, but you can find auto generated [docs](http://calendariofx.github.io/Calendario/docs/) here. After further testing, it would ready for a beta phase. Soon to release an example of how to implement it in Svelte.
