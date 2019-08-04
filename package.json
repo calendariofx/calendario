@@ -1,6 +1,6 @@
 {
   "name": "calendariofx-calendario",
-  "version": "7.0.0-alpha.3",
+  "version": "7.0.0-alpha.4",
   "version-name": "Enigma",
   "description": "A calendar for creating flexible calendars.",
   "main": "index.js",
@@ -10,8 +10,8 @@
     "build": "NODE_ICU_DATA='./node_modules/full-icu' rollup -c",
     "watch": "NODE_ICU_DATA='./node_modules/full-icu' rollup -c -w",
     "test": "NODE_ICU_DATA='./node_modules/full-icu' jest",
-    "docs": "typedoc ./src",
-    "deploy": "gh-pages -d public",
+    "docs": "typedoc ./src && touch ./public/.nojekyll",
+    "deploy": "gh-pages -d ./public -t",
     "clean": "rimraf index.js index.mjs @types",
     "lint": "eslint .",
     "prepublishOnly": "NODE_ICU_DATA='./node_modules/full-icu' run-s lint test build",
@@ -51,7 +51,6 @@
     "babel-jest": "^24.8.0",
     "eslint": "^6.1.0",
     "eslint-plugin-jest": "^22.14.1",
-    "gh-pages": "^2.1.0",
     "jest": "^24.8.0",
     "npm-run-all": "^4.1.5",
     "rimraf": "^2.6.3",
@@ -60,6 +59,7 @@
     "rollup-plugin-dts": "^1.1.6",
     "rollup-plugin-replace": "^2.2.0",
     "rollup-plugin-typescript": "^1.0.1",
+    "touch": "^3.1.0",
     "ts-jest": "^24.0.2",
     "tslib": "^1.10.0",
     "typedoc": "^0.15.0",
@@ -67,6 +67,7 @@
   },
   "dependencies": {
     "full-icu": "^1.3.0",
+    "gh-pages": "^2.0.1",
     "luxon": "^1.17.2"
   }
 }

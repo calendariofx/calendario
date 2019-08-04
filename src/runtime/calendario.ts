@@ -49,6 +49,7 @@ export class Calendario extends Today {
                 if (!Array.isArray(cal[i])) cal[i] = []
                 console.log(stDate.toLocaleString(), this.filterEvents(stDate))
                 cal[i].push({
+                    date: stDate,
                     dateClass: `date-${stDate.toFormat(this.options.format)}`,
                     events: this.filterEvents(stDate),
                     future: stDate > _td,
