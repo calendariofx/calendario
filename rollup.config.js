@@ -26,7 +26,8 @@ export default [
             copy({
                 targets: [
                     { dest: 'public', src: 'LICENSE' },
-                    { dest: 'public', src: 'README.md' }
+                    { dest: 'public', src: 'README.md' },
+                    { dest: 'public', src: 'logo.png' }
                 ]
             })
         ]

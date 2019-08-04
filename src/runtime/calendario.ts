@@ -47,7 +47,6 @@ export class Calendario extends Today {
         for(let i = 0; i < cal.length; i++) {
             for(let j = 0; j < 7; j++) {
                 if (!Array.isArray(cal[i])) cal[i] = []
-                console.log(stDate.toLocaleString(), this.filterEvents(stDate))
                 cal[i].push({
                     date: stDate,
                     dateClass: `date-${stDate.toFormat(this.options.format)}`,

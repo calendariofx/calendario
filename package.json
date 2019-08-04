@@ -1,6 +1,6 @@
 {
   "name": "calendariofx-calendario",
-  "version": "7.0.0-alpha.4",
+  "version": "7.0.0-alpha.5",
   "version-name": "Enigma",
   "description": "A calendar for creating flexible calendars.",
   "main": "index.js",
@@ -14,7 +14,7 @@
     "deploy": "gh-pages -d ./public -t",
     "clean": "rimraf index.js index.mjs @types",
     "lint": "eslint .",
-    "prepublishOnly": "NODE_ICU_DATA='./node_modules/full-icu' run-s test build",
+    "prepublishOnly": "NODE_ICU_DATA='./node_modules/full-icu' run-s lint test build",
     "postpublish": "run-s clean docs deploy"
   },
   "repository": {
@@ -26,7 +26,8 @@
     "README.md",
     "@types",
     "index.js",
-    "index.mjs"
+    "index.mjs",
+    "logo.jpg"
   ],
   "keywords": [
     "Calendar",

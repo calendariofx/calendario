@@ -1,2 +1,4 @@
 /index.*js
-examples/**
+/examples/**
+/node_modules/**
+/public/**

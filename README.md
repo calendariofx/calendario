@@ -1,4 +1,14 @@
+<div align="center">
+    <img src="./logo.jpg" alt="Calendario Logo">
+</div>
+
 # Calendario
+
+![GitHub package.json version](https://img.shields.io/github/package-json/v/calendariofx/calendario?style=flat-square)
+![Travis (.org)](https://img.shields.io/travis/calendariofx/calendario?style=flat-square)
+![GitHub top language](https://img.shields.io/github/languages/top/calendariofx/calendario?style=flat-square)
+![npm bundle size](https://img.shields.io/bundlephobia/min/calendariofx-calendario?style=flat-square)
+![GitHub](https://img.shields.io/github/license/calendariofx/calendario?style=flat-square)
 
 Calendario is a small library for creating flexible Calendars. It uses [Luxon](https://moment.github.io/luxon/) as it's Date wrapper, so by default Calendario supports internationalization through `Intl` api (supported by most mordern browsers), `Time Zones` with `DST` support, various `Numbering Systems` and more. Even though, [Luxon](https://moment.github.io/luxon/) supports multiple `Calendar` formatting, we decided to go against supporting any of that other than `Gregorian`. The reasoning behind it is `CalendarioFX`, a framework for generating calendars of various types of calendars (*details not ironed out yet*), but in the mean time enjoy building **Calendarios**
 
@@ -31,3 +41,6 @@ import calendario from 'calendariofx-calendario' // ESM
 # Documentaion / Test
 
 The detailed documentations and tests are being written, but you can find auto generated [docs](http://calendariofx.github.io/Calendario/docs/) here. After further testing, it would ready for a beta phase. Check out this [example in svelte](https://github.com/CalendarioFX/example-calendario-svelte/) on how to build a beautiful calendar.
+
+# License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FCalendarioFX%2FCalendario.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FCalendarioFX%2FCalendario?ref=badge_large)
