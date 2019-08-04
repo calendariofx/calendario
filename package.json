@@ -14,7 +14,7 @@
     "deploy": "gh-pages -d ./public -t",
     "clean": "rimraf index.js index.mjs @types",
     "lint": "eslint .",
-    "prepublishOnly": "NODE_ICU_DATA='./node_modules/full-icu' run-s lint test build",
+    "prepublishOnly": "NODE_ICU_DATA='./node_modules/full-icu' run-s test build",
     "postpublish": "run-s clean docs deploy"
   },
   "repository": {
