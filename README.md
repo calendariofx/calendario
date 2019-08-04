@@ -30,4 +30,4 @@ import calendario from 'calendariofx-calendario' // ESM
 
 # Documentaion / Test
 
-The detailed documentations and tests are being written, but you can find auto generated [docs](http://calendariofx.github.io/Calendario/docs/) here. After further testing, it would ready for a beta phase. Soon to release an example of how to implement it in Svelte.
+The detailed documentations and tests are being written, but you can find auto generated [docs](http://calendariofx.github.io/Calendario/docs/) here. After further testing, it would ready for a beta phase. Check out this [example in svelte](https://github.com/CalendarioFX/example-calendario-svelte/) on how to build a beautiful calendar.
