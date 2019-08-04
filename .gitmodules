@@ -1,0 +1,3 @@
+[submodule "examples/svelte"]
+	path = examples/svelte
+	url = git@github.com:CalendarioFX/example-calendario-svelte.git
